@@ -1,0 +1,7 @@
+{
+  "name": "LiveStatus",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}
