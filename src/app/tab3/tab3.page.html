@@ -6,4 +6,18 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content></ion-content>
+<ion-content>
+  <ion-card>
+    <ion-card-header>
+      当前版本
+    </ion-card-header>
+    <ion-card-content>
+      {{version}}
+    </ion-card-content>
+  </ion-card>
+  <ion-card>
+      <ion-card-content>
+        <ion-button (click)="checkUpdate()">检查更新</ion-button>
+      </ion-card-content>
+    </ion-card>
+</ion-content>
