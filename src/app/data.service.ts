@@ -18,7 +18,7 @@ export class DataService {
 
   getData(locale: String): Observable<any> {
 
-    const serviceUrl = 'http://notice.xbox.com/xocdata/xml/en-US/servicestatusv2.xml?id=1'; 
+    const serviceUrl = 'http://notice.xbox.com/xocdata/xml/'+locale+'/servicestatusv2.xml?id=1'; 
     const httpOptions = {
       headers: new HttpHeaders({ 
         'Content-Type':'application/json',

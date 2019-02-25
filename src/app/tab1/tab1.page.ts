@@ -1,9 +1,11 @@
 import { Component } from '@angular/core';
-import { LoadingController } from '@ionic/angular';
+import { LoadingController, NavController } from '@ionic/angular';
 
 import { DataService } from '../data.service';
 import { CoreService, XboxService } from '../service';
-import { makeDecorator } from '@angular/core/src/util/decorators';
+import { TranslateService } from '@ngx-translate/core';
+
+import { LocalStorageService } from 'ngx-webstorage';
 
 @Component({
   selector: 'app-tab1',
@@ -26,8 +28,12 @@ export class Tab1Page {
   
   constructor(
     private data : DataService,
-    public loadingController: LoadingController
+    public loadingController: LoadingController,
+    public navController: NavController,
+    public translateService: TranslateService,
+    private localStorageService: LocalStorageService
     ){
+      let locale = this.localStorageService.retrieve("LiveStatus_Locale");
   }
 
 
@@ -37,8 +43,8 @@ export class Tab1Page {
       spinner: 'circles',
     });
     await loading.present();
-    
-    this.data.getData("en-US")
+    let locale = this.localStorageService.retrieve("LiveStatus_Locale");
+    this.data.getData(locale)
       .subscribe(data => 
         {
           //1.overall json->class
