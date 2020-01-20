@@ -17,12 +17,13 @@ export class Tab1Page {
     effect: 'slide',
     loop: true,
     parallax: true,
+    pager: true,
   };
 
   coreStatus: number;
   coreTimestamp: string;
 
-  coreServices: CoreService[];
+  coreServices1: CoreService[];
   xboxOneServices: XboxService[];
   xbox360Services: XboxService[];
   
@@ -38,15 +39,20 @@ export class Tab1Page {
 
 
   async ngOnInit(){
+    /*
     const loading = await this.loadingController.create({
       message: 'Please wait...',
       spinner: 'circles',
     });
-    await loading.present();
-    let locale = this.localStorageService.retrieve("LiveStatus_Locale");
+    await loading.present();*/
+
+    await this.getOverallStatus();
+
+    /*
     this.data.getData(locale)
       .subscribe(data => 
         {
+          console.log(data)
           //1.overall json->class
           this.coreStatus = data["LiveStatus"]["Status"];
           this.coreTimestamp = data["LiveStatus"]["TimeStamp"]["TimeStamp"];
@@ -69,7 +75,52 @@ export class Tab1Page {
           
           loading.dismiss();
         }
-      );
+      );*/
+  }
+
+  coreStateId = 0;
+  coreState = '';
+  coreStateLastUpdated;
+  coreServices = [];
+
+  async getOverallStatus(){
+    this.data.getOverallData()
+    .subscribe(data => 
+      {
+        console.log(data)
+        this.coreState = data["Status"]["Overall"]["State"];
+        this.coreStateId = data["Status"]["Overall"]["Id"];
+        this.coreStateLastUpdated = data["Status"]["Overall"]["LastUpdated"]
+        console.log(this.coreState =='Impacted')
+        this.coreServices = data["CoreServices"]
+
+
+
+
+        /*
+        //1.overall json->class
+        this.coreStatus = data["LiveStatus"]["Status"];
+        this.coreTimestamp = data["LiveStatus"]["TimeStamp"]["TimeStamp"];
+
+        //2.core services
+        this.coreServices = data["CoreServices"];
+
+        //partner services
+        for(let subCategory of data["PartnerServices"]){
+            //alert(JSON.stringify(subCategory))
+            //3.subcategory xbox one
+            if(subCategory["Name"]=="Xbox One"){
+              //this.xboxOneServices = subCategory["ServiceStatus"];
+            }
+            //4.subcategory xbox 360
+            if(subCategory["Name"]=="Xbox 360"){
+              //this.xbox360Services = subCategory["ServiceStatus"];
+            }
+        }
+        */
+        
+      }
+    );
   }
 
   subText(str: string, n: number) {

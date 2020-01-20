@@ -3,6 +3,7 @@ import { Observable, of } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, map, tap } from 'rxjs/operators';
 import { Status } from "./status";
+import { LocalStorageService } from 'ngx-webstorage';
 
 
 @Injectable({
@@ -10,7 +11,8 @@ import { Status } from "./status";
 })
 export class DataService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,
+    private localStorageService: LocalStorageService) { }
 
   private log(message: string) {
     console.log(message);
@@ -18,7 +20,7 @@ export class DataService {
 
   getData(locale: String): Observable<any> {
 
-    const serviceUrl = 'http://notice.xbox.com/xocdata/xml/'+locale+'/servicestatusv2.xml?id=1'; 
+    const serviceUrl = 'http://notice.xbox.com/xocdata/xml/'+locale+'/servicestatusv3.xml?id=1'; 
     const httpOptions = {
       headers: new HttpHeaders({ 
         'Content-Type':'application/json',
@@ -34,6 +36,27 @@ export class DataService {
         tap(heroes => this.log('fetched live status xml')),
         catchError(this.handleError('getLiveStatusData', []))
       );
+  }
+
+  getOverallData(): Observable<any> {
+
+    let locale = this.localStorageService.retrieve("LiveStatus_Locale");
+    const serviceUrl = 'http://notice.xbox.com/ServiceStatusv5/'+locale+'?id=1'; 
+    const httpOptions = {
+        headers: new HttpHeaders({ 
+            'Content-Type':'application/json',
+            'Access-Control-Allow-Origin*':'*',
+            'Access-Control-Allow-Methods': 'GET, HEAD, OPTIONS, POST, PUT',
+            'Access-Control-Allow-Headers':'Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers',
+        }),
+        body: ''
+    };
+
+    return this.http.post<any>(serviceUrl, httpOptions)
+    .pipe(
+        tap(data => this.log('fetched overall status xml')),
+        catchError(this.handleError('getLiveStatusData', []))
+    );
   }
 
   private handleError<T> (operation = 'operation', result?: T) {

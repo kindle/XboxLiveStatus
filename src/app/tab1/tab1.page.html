@@ -1,65 +1,78 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>
-      Tab One
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content>
-    <ion-slides pager="false" [options]="slideOpts">
-      <ion-slide>
-          <ion-card class="welcome-card">
-            <ion-card-header>
-              <ion-card-subtitle>Overall Status {{ 'Article.Comments' | translate }}</ion-card-subtitle>
-              <ion-card-title>Welcome to Ionic</ion-card-title>
-            </ion-card-header>
-            <ion-card-content>
-              <ion-icon slot="start" color="medium" name="checkmark-circle-outline" *ngIf="coreStatus==1"></ion-icon>
-              <p>{{coreTimestamp}}</p>
-              <p>Now that your app has been created, you'll want to start building out features and components. Check out some of the resources below for next steps.</p>
-            </ion-card-content>
-          </ion-card>
-      </ion-slide>
-      <ion-slide>
-          <ion-list lines="none">
+
+  <ion-slides style="height: 100%;">
+    <div class="parallax-bg" style="background-image:url(assets/icon/PanoramaBackground.png)" data-swiper-parallax="-23%"></div>
+  
+    <ion-slide style="display:flex;flex-flow:column;">
+        <ion-list style="width: 100%;background-color:transparent;" data-swiper-parallax="-300">
             <ion-list-header>
-              <ion-label>Core Services</ion-label>
+                <h1 style="color:white;">Overall Status</h1>
             </ion-list-header>
-            <ng-template ngFor let-coreService [ngForOf]="coreServices">
-              <ion-item href="https://ionicframework.com/docs/">
-                <ion-icon slot="start" color="medium" name="checkmark-circle-outline" *ngIf="coreService.Status==1"></ion-icon>
-                <ion-label>{{coreService.Category}}</ion-label>
-              </ion-item>
-            </ng-template>
-          </ion-list>
-      </ion-slide>
-      <ion-slide>
-          <ion-list lines="none">
-            <ion-list-header>
-              <ion-label>Xbox One Services</ion-label>
-            </ion-list-header>
-            <ng-template ngFor let-xboxOneService [ngForOf]="xboxOneServices">
-              <ion-item>
-                <ion-icon slot="start" color="medium" name="checkmark-circle-outline" *ngIf="xboxOneService.Status==1"></ion-icon>
-                <ion-label>{{subText(xboxOneService.Application,50)}}</ion-label>
-              </ion-item>
-            </ng-template>
-          </ion-list>
-      </ion-slide>
-      <ion-slide>
-          <ion-list lines="none">
-            <ion-list-header>
-              <ion-label>Xbox 360 Services</ion-label>
-            </ion-list-header>
-            <ng-template ngFor let-xbox360Service [ngForOf]="xbox360Services">
-              <ion-item>
-                <ion-icon slot="start" color="medium" name="checkmark-circle-outline" *ngIf="xbox360Service.Status==1"></ion-icon>
-                <ion-label>{{subText(xbox360Service.Application,50)}}</ion-label>
-              </ion-item>
-            </ng-template>
-          </ion-list>
-      </ion-slide>
-    </ion-slides>
+            <ion-item lines="none" style="--background: transparent">
+                <ion-avatar slot="start" class="avatar-top sharePhotoNone">
+                    <ion-icon name="checkmark-circle-outline" color="primary" *ngIf="coreStateId==1"
+                      class="sharePortraitNone"></ion-icon>
+                    <ion-icon name="information-circle-outline" color="danger" *ngIf="coreStateId==2"
+                      class="sharePortraitNone"></ion-icon>
+                </ion-avatar>
+                <ion-text slot="start" style="margin-left: 30px;">
+                    <h3 style="color:white;">Xbox Live Status</h3>
+                    <h4 style="color:white;" *ngIf="coreStateId==1">Up and Running</h4>
+                    <h4 style="color:white;" *ngIf="coreStateId==2">Service Alert</h4>
+                    <p style="color:white;">{{coreStateLastUpdated | date: 'yyyy-MM-dd HH:mm:ss'}}</p>
+                </ion-text>
+            </ion-item>
+        </ion-list>
+        <br>
+        <ion-list style="width: 100%;margin-bottom: auto;background-color:transparent;" data-swiper-parallax="-300">
+          <ion-list-header>
+              <h1 style="color:white;">Notifications</h1>
+          </ion-list-header>
+          <ion-item lines="none" style="--background: transparent">
+              <ion-avatar slot="start" class="avatar-top sharePhotoNone">
+                  <ion-icon name="checkmark-circle" color="primary" *ngIf="coreStateId==1"
+                    class="sharePortraitNone"></ion-icon>
+                  <ion-icon name="information-circle-outline" color="danger" *ngIf="coreStateId==2"
+                    class="sharePortraitNone"></ion-icon>
+              </ion-avatar>
+              <ion-text slot="start" style="margin-left: 30px;">
+                  <h3 style="color:white;">Xbox Live Status</h3>
+                  <h4 style="color:white;" *ngIf="coreStateId==1">Up and Running</h4>
+                  <h4 style="color:white;" *ngIf="coreStateId==2">Service Alert</h4>
+                  <p style="color:white;">{{coreStateLastUpdated | date: 'yyyy-MM-dd HH:mm:ss'}}</p>
+              </ion-text>
+          </ion-item>
+      </ion-list>
+    </ion-slide>
+    <ion-slide>
+      <ion-list style="width: 100%;margin-bottom: auto;background-color:transparent;" data-swiper-parallax="-300">
+        <ion-list-header>
+            <h1 style="color:white;">Core Services</h1>
+        </ion-list-header>
+        <ion-item lines="none" *ngFor="let coreService of coreServices" style="--background: transparent">
+            <ion-avatar slot="start" class="avatar-top sharePhotoNone">
+                <ion-icon name="checkmark-circle" color="primary" *ngIf="coreService['Status']['Id']==1"
+                  class="sharePortraitNone"></ion-icon>
+                <ion-icon name="information-circle-outline" color="danger" *ngIf="coreService['Status']['Id']==2"
+                  class="sharePortraitNone"></ion-icon>
+            </ion-avatar>
+            <ion-text slot="start" style="margin-left: 30px;" text-wrap>
+                <h3 style="color:white;">{{coreService["Name"]}}</h3>
+                <h4 style="color:white;" *ngIf="coreService['Status']['Id']==1">Up and Running</h4>
+                <h4 style="color:white;" *ngIf="coreService['Status']['Id']==2">
+                  {{coreService["Scenarios"][0]["Incidents"][0]["Begin"] | date: 'yyyy-MM-dd HH:mm:ss'}}
+                </h4>
+                <p style="color:white;" *ngIf="coreService['Status']['Id']==2">
+                  {{coreService["Scenarios"][0]["Incidents"][0]["Stage"]["Message"]}}
+                </p>
+            </ion-text>
+        </ion-item>
+    </ion-list>
+    </ion-slide>
+    <ion-slide on-slide-changed="slideHasChanged(index)">
+      <div class="box pink"><h1>PINK</h1></div>
+    </ion-slide>
+  </ion-slides>
+   
   
 </ion-content>
