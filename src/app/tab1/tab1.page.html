@@ -1,16 +1,14 @@
 <ion-content>
-
-  <ion-slides style="height: 100%;">
-    <div class="parallax-bg" style="background-image:url(assets/icon/PanoramaBackground.png)" data-swiper-parallax="-23%"></div>
-  
+  <ion-slides #mySlider style="height: 100%;" [options]="slideOpts" (ionSlideDidChange)="onSlideChanged()" >
+    <div class="parallax-bg" style="background-image:url(assets/icon/PanoramaBackground.png)"></div>
     <ion-slide style="display:flex;flex-flow:column;">
-        <ion-list style="width: 100%;background-color:transparent;" data-swiper-parallax="-300">
+        <ion-list style="width: 100%;background-color:transparent;">
             <ion-list-header>
                 <h1 style="color:white;">Overall Status</h1>
             </ion-list-header>
             <ion-item lines="none" style="--background: transparent">
                 <ion-avatar slot="start" class="avatar-top sharePhotoNone">
-                    <ion-icon name="checkmark-circle-outline" color="primary" *ngIf="coreStateId==1"
+                    <ion-icon name="checkmark-circle" color="primary" *ngIf="coreStateId==1"
                       class="sharePortraitNone"></ion-icon>
                     <ion-icon name="information-circle-outline" color="danger" *ngIf="coreStateId==2"
                       class="sharePortraitNone"></ion-icon>
@@ -24,7 +22,7 @@
             </ion-item>
         </ion-list>
         <br>
-        <ion-list style="width: 100%;margin-bottom: auto;background-color:transparent;" data-swiper-parallax="-300">
+        <ion-list style="width: 100%;margin-bottom: auto;background-color:transparent;">
           <ion-list-header>
               <h1 style="color:white;">Notifications</h1>
           </ion-list-header>
@@ -45,7 +43,7 @@
       </ion-list>
     </ion-slide>
     <ion-slide>
-      <ion-list style="width: 100%;margin-bottom: auto;background-color:transparent;" data-swiper-parallax="-300">
+      <ion-list style="width: 100%;margin-bottom: auto;background-color:transparent;">
         <ion-list-header>
             <h1 style="color:white;">Core Services</h1>
         </ion-list-header>

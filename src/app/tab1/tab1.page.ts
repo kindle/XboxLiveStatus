@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { LoadingController, NavController } from '@ionic/angular';
+import { Component, ViewChild } from '@angular/core';
+import { LoadingController, NavController, IonSlides } from '@ionic/angular';
 
 import { DataService } from '../data.service';
 import { CoreService, XboxService } from '../service';
@@ -16,8 +16,9 @@ export class Tab1Page {
   slideOpts = {
     effect: 'slide',
     loop: true,
+    //autoplay:false,
     parallax: true,
-    pager: true,
+    //pager: true,
   };
 
   coreStatus: number;
@@ -35,6 +36,17 @@ export class Tab1Page {
     private localStorageService: LocalStorageService
     ){
       let locale = this.localStorageService.retrieve("LiveStatus_Locale");
+  }
+
+  @ViewChild('mySlider') slider: IonSlides;
+  
+  onSlideChanged() {
+      this.slider.getActiveIndex().then((index: number) => {
+          if(index==4)
+          {
+            this.slider.slideTo(1, 0);
+          }
+      });
   }
 
 
