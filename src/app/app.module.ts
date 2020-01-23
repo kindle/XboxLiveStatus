@@ -21,16 +21,32 @@ import {HttpClient, HttpClientModule} from '@angular/common/http';
 import { NgxWebstorageModule } from 'ngx-webstorage';
 import { LocalePage } from './locale/locale.page';
 
+import {
+  Headers,Jsonp,
+} from '@angular/http';
+
+import { JsonpModule } from '@angular/http';
+import { SettingsPage } from './settings/settings.page';
+import { SearchPage } from './search/search.page';
+
 @NgModule({
   declarations: [
     AppComponent,
-    LocalePage],
-  entryComponents: [LocalePage],
+    LocalePage,
+    SettingsPage,
+    SearchPage,
+  ],
+  entryComponents: [
+    LocalePage,
+    SettingsPage,
+    SearchPage,
+  ],
   imports: [
     BrowserModule, 
     IonicModule.forRoot(), 
     AppRoutingModule,
     HttpClientModule,
+    JsonpModule,
     NgxWebstorageModule.forRoot(),
     TranslateModule.forRoot({
         loader: {

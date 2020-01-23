@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { LoadingController, NavController, IonSlides } from '@ionic/angular';
+import { LoadingController, NavController, IonSlides, AlertController } from '@ionic/angular';
 
 import { DataService } from '../data.service';
 import { CoreService, XboxService } from '../service';
@@ -13,127 +13,82 @@ import { LocalStorageService } from 'ngx-webstorage';
   styleUrls: ['tab1.page.scss']
 })
 export class Tab1Page {
-  slideOpts = {
-    effect: 'slide',
-    loop: true,
-    //autoplay:false,
-    parallax: true,
-    //pager: true,
-  };
 
-  coreStatus: number;
-  coreTimestamp: string;
+    @ViewChild('mySlider') slider: IonSlides;
+    slideOpts = {
+        effect: 'slide',
+        loop: false,
+        parallax: true,
+        scrollbar: true,
+    };
 
-  coreServices1: CoreService[];
-  xboxOneServices: XboxService[];
-  xbox360Services: XboxService[];
+    coreStatus: number;
+    coreTimestamp: string;
+
   
-  constructor(
-    private data : DataService,
-    public loadingController: LoadingController,
-    public navController: NavController,
-    public translateService: TranslateService,
-    private localStorageService: LocalStorageService
+  
+    constructor(
+        public data : DataService,
+        public loadingController: LoadingController,
+        public navController: NavController,
+        public translateService: TranslateService,
+        private localStorageService: LocalStorageService,
+        private alertController: AlertController,
+        private translate: TranslateService,
     ){
-      let locale = this.localStorageService.retrieve("LiveStatus_Locale");
-  }
+        let locale = this.localStorageService.retrieve("LiveStatus_Locale");
+    }
 
-  @ViewChild('mySlider') slider: IonSlides;
   
-  onSlideChanged() {
-      this.slider.getActiveIndex().then((index: number) => {
-          if(index==4)
-          {
-            this.slider.slideTo(1, 0);
-          }
-      });
+    
+
+    async ngOnInit(){
+        await this.data.getDefaultStatus();
+        setInterval(()=>{
+            this.data.silenceRefreshStatus()
+        }, 1000*60*5)
+    }
+    
+    onSlideChanged() {
+        this.slider.getActiveIndex().then((index: number) => {
+            if(index==4)
+            {
+              this.slider.slideTo(1, 0);
+            }
+        });
+    }
+
+
+  
+
+  async subscribe(scenarioId, incidentId)
+  { 
+      this.localStorageService.store("LiveStatus_"+scenarioId+"_"+incidentId, true);
   }
 
-
-  async ngOnInit(){
-    /*
-    const loading = await this.loadingController.create({
-      message: 'Please wait...',
-      spinner: 'circles',
-    });
-    await loading.present();*/
-
-    await this.getOverallStatus();
-
-    /*
-    this.data.getData(locale)
-      .subscribe(data => 
-        {
-          console.log(data)
-          //1.overall json->class
-          this.coreStatus = data["LiveStatus"]["Status"];
-          this.coreTimestamp = data["LiveStatus"]["TimeStamp"]["TimeStamp"];
-
-          //2.core services
-          this.coreServices = data["CoreServices"];
-
-          //partner services
-          for(let subCategory of data["PartnerServices"]){
-              //alert(JSON.stringify(subCategory))
-              //3.subcategory xbox one
-              if(subCategory["Name"]=="Xbox One"){
-                //this.xboxOneServices = subCategory["ServiceStatus"];
-              }
-              //4.subcategory xbox 360
-              if(subCategory["Name"]=="Xbox 360"){
-                //this.xbox360Services = subCategory["ServiceStatus"];
-              }
-          }
-          
-          loading.dismiss();
-        }
-      );*/
+  check(scenarioId, incidentId)
+  { 
+      return this.localStorageService.retrieve("LiveStatus_"+scenarioId+"_"+incidentId)===true;
   }
 
-  coreStateId = 0;
-  coreState = '';
-  coreStateLastUpdated;
-  coreServices = [];
-
-  async getOverallStatus(){
-    this.data.getOverallData()
-    .subscribe(data => 
-      {
-        console.log(data)
-        this.coreState = data["Status"]["Overall"]["State"];
-        this.coreStateId = data["Status"]["Overall"]["Id"];
-        this.coreStateLastUpdated = data["Status"]["Overall"]["LastUpdated"]
-        console.log(this.coreState =='Impacted')
-        this.coreServices = data["CoreServices"]
-
-
-
-
-        /*
-        //1.overall json->class
-        this.coreStatus = data["LiveStatus"]["Status"];
-        this.coreTimestamp = data["LiveStatus"]["TimeStamp"]["TimeStamp"];
-
-        //2.core services
-        this.coreServices = data["CoreServices"];
-
-        //partner services
-        for(let subCategory of data["PartnerServices"]){
-            //alert(JSON.stringify(subCategory))
-            //3.subcategory xbox one
-            if(subCategory["Name"]=="Xbox One"){
-              //this.xboxOneServices = subCategory["ServiceStatus"];
-            }
-            //4.subcategory xbox 360
-            if(subCategory["Name"]=="Xbox 360"){
-              //this.xbox360Services = subCategory["ServiceStatus"];
-            }
-        }
-        */
-        
+  async message(scenario, incident){
+      let message = "ID: "+scenario["Id"]+" "+ incident["Id"] + "<br><br>";
+      if(incident["Stage"]["Message"]!==""){ 
+          message += incident["Stage"]["Message"] + "<br><br>";
       }
-    );
+      message += scenario["Devices"].map(d=>d["Name"]).join(",") + "<br><br>";
+      message += this.data.utcToLocal(incident["Begin"], 'YYYY-MM-DD HH:mm:ss')
+
+      const alert = await this.alertController.create({
+          //header: this.translate.instant("Menu.PressPay"),
+          header: scenario["Name"],
+          message: message,
+      });
+
+      await alert.present();
   }
+
+  
 
   subText(str: string, n: number) {
     var r = /[^\u4e00-\u9fa5]/g;

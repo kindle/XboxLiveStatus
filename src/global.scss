@@ -9,3 +9,38 @@
 @import '~@ionic/angular/css/text-alignment.css';
 @import '~@ionic/angular/css/text-transformation.css';
 @import '~@ionic/angular/css/flex-utils.css';
+
+.tab-option-button{
+    position:absolute;
+    right:10px;
+    top:10px;
+    padding-left:20px;
+    padding-bottom:20px;
+}
+
+.tab-option-button::before{
+    position: absolute;
+    z-index: 10;
+    right: 0%;
+    margin-right: -5px;
+    margin-top: -3px;
+}
+
+
+ion-loading.custom-loading {
+    .loading-wrapper {
+        background-color: transparent;
+    }
+    .loading-spinner{
+        
+        .ion-spinner{
+            width:50px;
+            height:50px;
+        }
+    }
+}
+
+.avatar-top {
+    margin: 10px 0px 0px 0px;
+    margin-bottom: auto;
+}

@@ -26,9 +26,9 @@ export class Tab3Page {
     public navController: NavController,
     private router: Router
   ){
-    this.getVersionNumber().then(version => {
-      this.version = version;
-    });
+      this.getVersionNumber().then(version => {
+        this.version = version;
+      });
   }
 
   getVersionNumber(): Promise<string> {

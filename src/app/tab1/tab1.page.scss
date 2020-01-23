@@ -1,45 +1,65 @@
-.welcome-card ion-img {
-  max-height: 35vh;
-  overflow: hidden;
-}
-
-.sharePortraitNone{
-  border-radius: 0px;
-  width: 50px;
-  height: 50px;
-}
-
-
-.sharePhotoNone{
-  margin: 0 5px 5px 0;
-  background-color: transparent;
-  border-radius: 0px;
-  padding:5px;
-
-}
-
-
-.avatar-top {
-  margin: 10px 0px 0px 0px;
-  margin-bottom: auto;
-}
-
-.image-parallax{    
-  position: absolute;
-  img{
-    margin-left: 200px;
-    width: 2000px;
-    height: auto;
-  }
-}
-
 .parallax-bg {
   position: absolute;
-  left: 0;
+  left: -50%;
   top: 0;
   width: 500%;
   height: 100%;
   -webkit-background-size: cover;
   background-size: cover;
   background-position: center;
+}
+
+ion-slides {
+  height: auto;
+}
+
+.overall-service-list{
+    width: 100%;
+    background-color:transparent;
+}
+
+.service-list{
+    width: 100%;
+    margin-bottom: auto;
+    background-color:transparent;
+}
+
+.service-title {
+    margin-left: 20px;
+    margin-right:0;
+}
+
+.notify-box-green {
+    background-color:#107c10;
+    padding:1px 15px 15px 15px;
+    margin-top:15px;
+    border-radius: 1px;
+}
+
+.notify-box-light {
+    background-color: transparent;
+    padding:1px 15px 15px 0px;
+    margin-top:15px;
+    border-radius: 1px;
+}
+
+h1, h2, h3, h4, h5 {
+    color: white;
+}
+
+.incident-box{
+    --background: transparent;
+    margin-bottom: 15px;
+}
+
+.incident-icon-container{
+    background-color: transparent;
+    border-radius: 0px;
+}
+
+.incident-icon {
+    border-radius: 0px;
+    min-width: 40px;
+    min-height: 40px;
+    margin-top: 8px;
 }
