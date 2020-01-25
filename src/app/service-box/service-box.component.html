@@ -1,0 +1,40 @@
+<ion-list class="service-list scroll-list">
+    <ion-list-header>
+        <h1>{{title}}</h1>
+    </ion-list-header>
+    <ion-item lines="none" *ngFor="let service of services" style="--background: transparent">
+        <ion-avatar slot="start" class="avatar-top incident-icon-container">
+            <img src="/assets/icon/UpAndRunning_icon.png" *ngIf="service['Status']['Id']==1"
+                class="incident-icon">
+            <img src="/assets/icon/ServiceAlert_icon.png" *ngIf="service['Status']['Id']==2"
+                class="incident-icon">
+        </ion-avatar>
+        <div slot="start" class="service-title">
+            <h4>{{service["Name"]}}</h4>
+            <h5 *ngIf="service['Status']['Id']==1">Up and Running</h5>
+            <p *ngIf="service['Status']['Id']==1" style="color:#cdcdcd;">
+                {{data.overall['LastUpdated'] | date: 'yyyy-MM-dd HH:mm:ss'}}
+            </p>
+
+            <div *ngIf="service['Status']['Id']==2">
+                <div *ngFor="let scenario of service['Scenarios']" style="--background: transparent">
+                    <div *ngFor="let incident of scenario['Incidents']" class="incident-box">
+                        <h5 (click)="message(scenario, incident)">
+                            {{scenario["Name"]}}
+                        </h5>
+                        <h5 style="color:#cdcdcd;" (click)="message(scenario, incident)">
+                            {{incident["Begin"] | date: 'yyyy-MM-dd HH:mm:ss'}}
+                        </h5>
+                        <div class="notify-box-green" *ngIf="!data.isSubscribed(scenario, incident)"
+                            (click)="data.subscribe(scenario, incident)">
+                            <h5>Notify me when this service or app is up and running</h5>
+                        </div>
+                        <div class="notify-box-light" *ngIf="data.isSubscribed(scenario, incident)">
+                            <h5 style="color:#cdcdcd;">Thank you. We will notify you when service or app is up and running.</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ion-item>
+</ion-list>

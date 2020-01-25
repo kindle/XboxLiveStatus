@@ -44,9 +44,6 @@ export class Tab1Page {
 
     async ngOnInit(){
         await this.data.getDefaultStatus();
-        setInterval(()=>{
-            this.data.silenceRefreshStatus()
-        }, 1000*60*5)
     }
     
     onSlideChanged() {
@@ -57,37 +54,29 @@ export class Tab1Page {
             }
         });
     }
-
-
   
-
-  async subscribe(scenarioId, incidentId)
-  { 
-      this.localStorageService.store("LiveStatus_"+scenarioId+"_"+incidentId, true);
-  }
-
-  check(scenarioId, incidentId)
-  { 
-      return this.localStorageService.retrieve("LiveStatus_"+scenarioId+"_"+incidentId)===true;
-  }
-
-  async message(scenario, incident){
-      let message = "ID: "+scenario["Id"]+" "+ incident["Id"] + "<br><br>";
-      if(incident["Stage"]["Message"]!==""){ 
-          message += incident["Stage"]["Message"] + "<br><br>";
-      }
-      message += scenario["Devices"].map(d=>d["Name"]).join(",") + "<br><br>";
-      message += this.data.utcToLocal(incident["Begin"], 'YYYY-MM-DD HH:mm:ss')
-
-      const alert = await this.alertController.create({
-          //header: this.translate.instant("Menu.PressPay"),
-          header: scenario["Name"],
-          message: message,
-      });
-
-      await alert.present();
-  }
-
+    check(scenarioId, incidentId)
+    { 
+        return this.localStorageService.retrieve("LiveStatus_"+scenarioId+"_"+incidentId)===true;
+    }
+  
+    async message(scenario, incident){
+        let message = "ID: "+scenario["Id"]+" "+ incident["Id"] + "<br><br>";
+        if(incident["Stage"]["Message"]!==""){ 
+            message += incident["Stage"]["Message"] + "<br><br>";
+        }
+        message += scenario["Devices"].map(d=>d["Name"]).join(",") + "<br><br>";
+        message += this.data.utcToLocal(incident["Begin"], 'YYYY-MM-DD HH:mm:ss')
+  
+        const alert = await this.alertController.create({
+            //header: this.translate.instant("Menu.PressPay"),
+            header: scenario["Name"],
+            message: message,
+        });
+  
+        await alert.present();
+    }
+  
   
 
   subText(str: string, n: number) {

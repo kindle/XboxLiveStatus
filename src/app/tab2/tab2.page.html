@@ -1,0 +1,53 @@
+
+<div class="parallax-bg" style="background-image:url(assets/icon/PanoramaBackground.png)"></div>
+  
+<ion-item style="--background:transparent;" lines="none">
+  <h1 style="color:white;">Settings</h1>
+</ion-item>
+<ion-content color="transparent">
+  
+  <ion-list style="width: 100%;background-color:transparent;margin-bottom:auto;">
+      <ion-list style="background-color:transparent;">
+        <ion-list-header>
+          <ion-label color="light">服务通知</ion-label>
+        </ion-list-header>
+        <ion-item lines="none" style="--background:transparent;">
+          <ion-label color="light">{{data.showNotify?"打开":"关闭"}}</ion-label>
+          <ion-toggle [(ngModel)]="data.showNotify" color="success" slot="end" (ionChange)="data.changeNotify()"></ion-toggle>
+        </ion-item>
+      </ion-list>
+      <ion-list style="background-color:transparent;" (click)="changeLocale()">
+        <ion-list-header>
+          <ion-label color="light">更换语言</ion-label>
+        </ion-list-header>
+        <ion-item lines="none" style="--background:transparent;">
+          <ion-label color="light">关闭</ion-label>
+          <ion-toggle color="success" slot="end" (ionChange)="data.changeNotify()"></ion-toggle>
+        </ion-item>
+      </ion-list>
+      <ion-list style="background-color:transparent;">
+        <ion-list-header>
+          <ion-label color="light">服务</ion-label>
+        </ion-list-header>
+        <ion-item lines="none" style="--background:transparent;">
+          <ion-label color="light">All</ion-label>
+          <ion-toggle color="success" slot="end" (ionChange)="data.changeNotify()"></ion-toggle>
+        </ion-item>
+      </ion-list>
+      <ion-list style="background-color:transparent;">
+        <ion-list-header>
+          <ion-label color="light">关于</ion-label>
+        </ion-list-header>
+        <ion-item lines="none" style="--background:transparent;">
+          <ion-label color="light">关闭</ion-label>
+          <ion-toggle color="success" slot="end" (ionChange)="data.changeNotify()"></ion-toggle>
+        </ion-item>
+      </ion-list>
+      <ion-item lines="none" style="--background:transparent;">
+          
+      </ion-item>
+  </ion-list>
+      
+ 
+
+</ion-content>

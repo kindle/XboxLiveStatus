@@ -6,6 +6,8 @@ import { FormsModule } from '@angular/forms';
 import { Tab1Page } from './tab1.page';
 import { TranslateModule } from '@ngx-translate/core';
 
+import { ServiceBoxComponent } from '../service-box/service-box.component';
+
 @NgModule({
   imports: [
     IonicModule,
@@ -14,6 +16,9 @@ import { TranslateModule } from '@ngx-translate/core';
     RouterModule.forChild([{ path: '', component: Tab1Page }]),
     TranslateModule.forChild()
   ],
-  declarations: [Tab1Page]
+  declarations: [
+    Tab1Page,
+    ServiceBoxComponent
+  ]
 })
 export class Tab1PageModule {}

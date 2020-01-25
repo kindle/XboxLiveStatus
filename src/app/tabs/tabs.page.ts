@@ -7,9 +7,9 @@ import { SettingsPage } from '../settings/settings.page';
 import { SearchPage } from '../search/search.page';
 
 @Component({
-  selector: 'app-tabs',
-  templateUrl: 'tabs.page.html',
-  styleUrls: ['tabs.page.scss']
+    selector: 'app-tabs',
+    templateUrl: 'tabs.page.html',
+    styleUrls: ['tabs.page.scss']
 })
 export class TabsPage {
 
@@ -23,7 +23,11 @@ export class TabsPage {
         private alertController: AlertController,
         public loadingController: LoadingController,
     ) 
-    {}
+    {
+        setInterval(()=>{
+            this.data.silenceRefreshStatus()
+        }, 1000*60*5)
+    }
 
     async refresh(){
         await this.data.forceRefreshStatus();
@@ -53,8 +57,7 @@ export class TabsPage {
       
     }
 
-    showText = false;
     async toggleText(){
-        this.showText = !this.showText;
+        this.data.showTabText = !this.data.showTabText;
     }
 }

@@ -1,22 +1,3 @@
-.parallax-bg {
-  position: absolute;
-  left: -50%;
-  top: 0;
-  width: 500%;
-  height: 100%;
-  -webkit-background-size: cover;
-  background-size: cover;
-  background-position: center;
-}
-
-ion-slides {
-  height: auto;
-}
-
-.overall-service-list{
-    width: 100%;
-    background-color:transparent;
-}
 
 .service-list{
     width: 100%;
@@ -62,12 +43,4 @@ h1, h2, h3, h4, h5 {
     min-width: 40px;
     min-height: 40px;
     margin-top: 8px;
-}
-
-
-
-
-app-service-box{
-    margin-bottom: auto;
-    width: 100%;
 }

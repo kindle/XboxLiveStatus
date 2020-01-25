@@ -3,6 +3,7 @@ import { IonSlides, Platform, ModalController, NavController } from '@ionic/angu
 import { LocalStorageService } from 'ngx-webstorage';
 import { Router } from '@angular/router';
 import { LocalePage } from '../locale/locale.page';
+import { DataService } from '../data.service';
 
 @Component({
   selector: 'app-tab2',
@@ -16,8 +17,38 @@ export class Tab2Page {
         private localStorageService: LocalStorageService,
         public modalController: ModalController,
         public navController: NavController,
-        private router: Router
+        private router: Router,
+        public data: DataService,
     ){
     }
+
+
+    @ViewChild('mySlider2') slider: IonSlides;
+
+    slideOpts = {
+        effect: 'slide',
+        loop: true,
+        parallax: true,
+    };
+
+    onSlideChanged() {
+    }
+
+    async changeLocale(){
+        let currentLocale = this.localStorageService.retrieve("LiveStatus_Locale");
+        const changeLocaleModal = await this.modalController.create({
+            component: LocalePage,
+            componentProps: { orgLocale: currentLocale }
+        });
+        
+        await changeLocaleModal.present();
+        const { data } = await changeLocaleModal.onDidDismiss();
+        if(data){
+            console.log(data)
+            //this.router.navigateByUrl('/tabs/(home:home)');
+            window.location.reload();
+        }
+    }
+  
     
 }

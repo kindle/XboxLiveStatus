@@ -21,52 +21,55 @@ import {HttpClient, HttpClientModule} from '@angular/common/http';
 import { NgxWebstorageModule } from 'ngx-webstorage';
 import { LocalePage } from './locale/locale.page';
 
-import {
-  Headers,Jsonp,
-} from '@angular/http';
+import { LocalNotifications } from '@ionic-native/local-notifications/ngx';
 
 import { JsonpModule } from '@angular/http';
 import { SettingsPage } from './settings/settings.page';
 import { SearchPage } from './search/search.page';
+import { NoticePopPage } from './notice-pop.page';
+
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    LocalePage,
-    SettingsPage,
-    SearchPage,
-  ],
-  entryComponents: [
-    LocalePage,
-    SettingsPage,
-    SearchPage,
-  ],
-  imports: [
-    BrowserModule, 
-    IonicModule.forRoot(), 
-    AppRoutingModule,
-    HttpClientModule,
-    JsonpModule,
-    NgxWebstorageModule.forRoot(),
-    TranslateModule.forRoot({
-        loader: {
-            provide: TranslateLoader,
-            useFactory: HttpLoaderFactory,
-            deps: [HttpClient]
-        }
-    })
-  ],
-  providers: [
-    StatusBar,
-    SplashScreen,
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
-    AppVersion,
-    AppUpdate,
-    DataService,
-  ],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        LocalePage,
+        SettingsPage,
+        SearchPage,
+        NoticePopPage,
+    ],
+    entryComponents: [
+        LocalePage,
+        SettingsPage,
+        SearchPage,
+        NoticePopPage,
+    ],
+    imports: [
+        BrowserModule, 
+        IonicModule.forRoot(), 
+        AppRoutingModule,
+        HttpClientModule,
+        JsonpModule,
+        NgxWebstorageModule.forRoot(),
+        TranslateModule.forRoot({
+            loader: {
+                provide: TranslateLoader,
+                useFactory: HttpLoaderFactory,
+                deps: [HttpClient]
+            }
+        })
+    ],
+    providers: [
+        StatusBar,
+        SplashScreen,
+        { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+        AppVersion,
+        AppUpdate,
+        DataService,
+        LocalNotifications,
+    ],
+    bootstrap: [AppComponent]
 })
 export class AppModule {}
 export function HttpLoaderFactory(http: HttpClient) {
-  return new TranslateHttpLoader(http);
+    return new TranslateHttpLoader(http);
 }

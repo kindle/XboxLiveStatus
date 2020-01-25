@@ -1,165 +1,57 @@
-<ion-content color="dark">
-  <ion-slides #mySlider style="height: 100%;" [options]="slideOpts" (ionSlideDidChange)="onSlideChanged()" >
-    <div class="parallax-bg" style="background-image:url(assets/icon/PanoramaBackground.png)"></div>
-    <ion-slide style="display:flex;flex-flow:column;">
-        <ion-list class="overall-service-list">
-            <ion-list-header>
-                <h1>Overall Status</h1>
-            </ion-list-header>
-            <ion-item lines="none" style="--background: transparent">
-                <ion-avatar slot="start" class="avatar-top incident-icon-container">
-                    <img src="/assets/icon/UpAndRunning_icon.png" *ngIf="data.overall['Id']==1"
-                      class="incident-icon">
-                    <img src="/assets/icon/ServiceAlert_icon.png" *ngIf="data.overall['Id']==2"
-                      class="incident-icon">
-                </ion-avatar>
-                <div slot="start" class="service-title">
-                    <h4>Xbox Live Status</h4>
-                    <h5 *ngIf="data.overall['Id']==1">Up and Running</h5>
-                    <h5 *ngIf="data.overall['Id']==2">Service Alert</h5>
-                    <p style="color:#cdcdcd;">{{data.overall['LastUpdated'] | date: 'yyyy-MM-dd HH:mm:ss'}}</p>
-                </div>
-            </ion-item>
-        </ion-list>
-        <br>
-        <ion-list class="service-list">
-          <ion-list-header>
-              <h1>Notifications</h1>
-          </ion-list-header>
-          <ion-item lines="none" style="--background: transparent">
-              <ion-avatar slot="start" class="avatar-top incident-icon-container">
-                  <img src="/assets/icon/UpAndRunning_icon.png" *ngIf="data.overall['Id']==1"
-                      class="incident-icon">
-                  <img src="/assets/icon/ServiceAlert_icon.png" *ngIf="data.overall['Id']==2"
-                      class="incident-icon">
-              </ion-avatar>
-              <div slot="start" class="service-title">
-                  <h4>Xbox Live Status</h4>
-                  <h5 *ngIf="data.overall['Id']==1">Up and Running</h5>
-                  <h5 *ngIf="data.overall['Id']==2">Service Alert</h5>
-                  <p style="color:white;">{{data.overall['LastUpdated'] | date: 'yyyy-MM-dd HH:mm:ss'}}</p>
-              </div>
-          </ion-item>
-      </ion-list>
-    </ion-slide>
-    <ion-slide>
-      <ion-list class="service-list">
-          <ion-list-header>
-              <h1>Core Services</h1>
-          </ion-list-header>
-          <ion-item lines="none" *ngFor="let coreService of data.coreServices" style="--background: transparent">
-              <ion-avatar slot="start" class="avatar-top incident-icon-container">
-                  <img src="/assets/icon/UpAndRunning_icon.png" *ngIf="coreService['Status']['Id']==1"
-                      class="incident-icon">
-                  <img src="/assets/icon/ServiceAlert_icon.png" *ngIf="coreService['Status']['Id']==2"
-                      class="incident-icon">
-              </ion-avatar>
-              <div slot="start" class="service-title">
-                  <h4>{{coreService["Name"]}}</h4>
-                  <h5 *ngIf="coreService['Status']['Id']==1">Up and Running</h5>
-
-                  <div *ngIf="coreService['Status']['Id']==2">
-                      <div *ngFor="let scenario of coreService['Scenarios']" style="--background: transparent">
-                          <div *ngFor="let incident of scenario['Incidents']" class="incident-box">
-                              <h5 (click)="message(scenario, incident)">
-                                {{scenario["Name"]}}
-                              </h5>
-                              <h5 style="color:#cdcdcd;" (click)="message(scenario, incident)">
-                                {{incident["Begin"] | date: 'yyyy-MM-dd HH:mm:ss'}}
-                              </h5>
-                              <div class="notify-box-green" *ngIf="!check(scenario['Id'], incident['Id'])"
-                                (click)="subscribe(scenario['Id'], incident['Id'])">
-                                  <h5>Notify me when this service or app is up and running</h5>
-                              </div>
-                              <div class="notify-box-light" *ngIf="check(scenario['Id'], incident['Id'])">
-                                  <h5 style="color:#cdcdcd;">Thank you. We will notify you when service or app is up and running.</h5>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-          </ion-item>
-      </ion-list>
-    </ion-slide>
-    <ion-slide>
-      <ion-list class="service-list">
-          <ion-list-header>
-              <h1>Games</h1>
-          </ion-list-header>
-          <ion-item lines="none" *ngFor="let category of data.gameServices" style="--background: transparent">
-              <ion-avatar slot="start" class="avatar-top incident-icon-container">
-                  <img src="/assets/icon/UpAndRunning_icon.png" *ngIf="category['Status']['Id']==1"
-                      class="incident-icon">
-                  <img src="/assets/icon/ServiceAlert_icon.png" *ngIf="category['Status']['Id']==2"
-                      class="incident-icon">
-              </ion-avatar>
-              <div slot="start" class="service-title">
-                  <h4>{{category["Name"]}}</h4>
-                  <h5 *ngIf="category['Status']['Id']==1">Up and Running</h5>
-                  <div *ngIf="category['Status']['Id']==2">
-                      <div *ngFor="let scenario of category['Scenarios']" style="--background: transparent">
-                          <div *ngFor="let incident of scenario['Incidents']" class="incident-box">
-                              <h5 (click)="message(scenario, incident)">
-                                {{scenario["Name"]}}
-                              </h5>
-                              <h5 style="color:#cdcdcd;" (click)="message(scenario, incident)">
-                                {{incident["Begin"] | date: 'yyyy-MM-dd HH:mm:ss'}}
-                              </h5>
-                              <div class="notify-box-green" *ngIf="!check(scenario['Id'], incident['Id'])"
-                                (click)="subscribe(scenario['Id'], incident['Id'])">
-                                  <h5>Notify me when this service or app is up and running</h5>
-                              </div>
-                              <div class="notify-box-light" *ngIf="check(scenario['Id'], incident['Id'])">
-                                  <h5 style="color:#cdcdcd;">Thank you. We will notify you when service or app is up and running.</h5>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-          </ion-item>
-      </ion-list>
-    </ion-slide>
-    <ion-slide>
-      <ion-list class="service-list">
-          <ion-list-header>
-              <h1>Apps</h1>
-          </ion-list-header>
-          <ion-item lines="none" *ngFor="let category of data.appServices" style="--background: transparent">
-              <ion-avatar slot="start" class="avatar-top incident-icon-container">
-                <img src="/assets/icon/UpAndRunning_icon.png" *ngIf="category['Status']['Id']==1"
-                    class="incident-icon">
-                <img src="/assets/icon/ServiceAlert_icon.png" *ngIf="category['Status']['Id']==2"
-                    class="incident-icon">
-              </ion-avatar>
-              <div slot="start" class="service-title">
-                  <h4>{{category["Name"]}}</h4>
-                  <h5 *ngIf="category['Status']['Id']==1">Up and Running</h5>
-                  <div *ngIf="category['Status']['Id']==2">
-                      <div *ngFor="let scenario of category['Scenarios']" style="--background: transparent">
-                          <div *ngFor="let incident of scenario['Incidents']" class="incident-box">
-                              <h5 (click)="message(scenario, incident)">
-                                {{scenario["Name"]}}
-                              </h5>
-                              <h5 style="color:#cdcdcd;" (click)="message(scenario, incident)">
-                                {{incident["Begin"] | date: 'yyyy-MM-dd HH:mm:ss'}}
-                              </h5>
-                              <div class="notify-box-green" *ngIf="!check(scenario['Id'], incident['Id'])"
-                                (click)="subscribe(scenario['Id'], incident['Id'])">
-                                  <h5>Notify me when this service or app is up and running</h5>
-                              </div>
-                              <div class="notify-box-light" *ngIf="check(scenario['Id'], incident['Id'])">
-                                  <h5 style="color:#cdcdcd;">Thank you. We will notify you when service or app is up and running.</h5>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-                  
-                  
-              </div>
-          </ion-item>
-      </ion-list>
-    </ion-slide>
-  </ion-slides>
-   
-  
+<ion-content color="dark" (click)="data.hideTabText()">
+    <ion-slides #mySlider style="height: 100%;" [options]="slideOpts" (ionSlideDidChange)="onSlideChanged()" >
+        <div class="parallax-bg" style="background-image:url(assets/icon/PanoramaBackground.png)"></div>
+            <ion-slide style="display:flex;flex-flow:column;">
+                <ion-list class="overall-service-list">
+                    <ion-list-header>
+                        <h1>Overall Status</h1>
+                    </ion-list-header>
+                    <ion-item lines="none" style="--background: transparent">
+                        <ion-avatar slot="start" class="avatar-top incident-icon-container">
+                            <img src="/assets/icon/UpAndRunning_icon.png" *ngIf="data.overall['Id']==1"
+                            class="incident-icon">
+                            <img src="/assets/icon/ServiceAlert_icon.png" *ngIf="data.overall['Id']==2"
+                            class="incident-icon">
+                        </ion-avatar>
+                        <div slot="start" class="service-title">
+                            <h4>Xbox Live Status</h4>
+                            <h5 *ngIf="data.overall['Id']==1">Up and Running</h5>
+                            <h5 *ngIf="data.overall['Id']==2">Service Alert</h5>
+                            <p style="color:#cdcdcd;">{{data.overall['LastUpdated'] | date: 'yyyy-MM-dd HH:mm:ss'}}</p>
+                        </div>
+                    </ion-item>
+                </ion-list>
+                <br>
+                <ion-list class="service-list scroll-list">
+                <ion-list-header *ngIf="data.noticeArray&&data.noticeArray.length>0">
+                    <h1>Notifications</h1>
+                </ion-list-header>
+                <ion-item lines="none" style="--background: transparent" 
+                    *ngFor="let notice of data.noticeArray">
+                    <ion-avatar slot="start" class="avatar-top incident-icon-container">
+                        <img src="/assets/icon/UpAndRunning_icon.png" class="incident-icon">
+                    </ion-avatar>
+                    <div slot="start" class="service-title">
+                        <h5>
+                            {{notice["Name"]}}
+                        </h5>
+                        <h5>Up and Running</h5>
+                        <h5 style="color:#cdcdcd;">
+                            {{notice["Time"] | date: 'yyyy-MM-dd HH:mm:ss'}}
+                        </h5>
+                    </div>
+                    <ion-icon slot="end" name="notifications-off" color="light" (click)="data.confirmDelete(notice)" ></ion-icon>
+                </ion-item>
+                </ion-list>
+            </ion-slide>
+        <ion-slide>
+            <app-service-box title="Core Services" [services]="data.coreServices"></app-service-box>
+        </ion-slide>
+        <ion-slide>
+            <app-service-box title="Games" [services]="data.gameServices"></app-service-box>
+        </ion-slide>
+        <ion-slide>
+            <app-service-box title="Apps" [services]="data.appServices"></app-service-box>
+        </ion-slide>
+    </ion-slides>
 </ion-content>
