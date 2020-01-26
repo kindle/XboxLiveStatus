@@ -2,7 +2,6 @@ import { Component, ViewChild } from '@angular/core';
 import { LoadingController, NavController, IonSlides, AlertController } from '@ionic/angular';
 
 import { DataService } from '../data.service';
-import { CoreService, XboxService } from '../service';
 import { TranslateService } from '@ngx-translate/core';
 
 import { LocalStorageService } from 'ngx-webstorage';

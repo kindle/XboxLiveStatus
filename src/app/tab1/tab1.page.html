@@ -1,3 +1,7 @@
+<ion-item style="--background:transparent;" lines="none" *ngIf="!data.settings.networkConnected">
+    <ion-icon slot="start" name="wifi" color="light"></ion-icon>
+    <ion-label color="light">No network connection</ion-label>
+</ion-item>
 <ion-content color="dark" (click)="data.hideTabText()">
     <ion-slides #mySlider style="height: 100%;" [options]="slideOpts" (ionSlideDidChange)="onSlideChanged()" >
         <div class="parallax-bg" style="background-image:url(assets/icon/PanoramaBackground.png)"></div>

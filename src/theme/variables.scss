@@ -76,7 +76,6 @@
   --ion-color-light-tint: #f5f6f9;
 }
 
-
 .modal-fullscreen {
   .modal-wrapper {
       position: absolute;
@@ -91,6 +90,13 @@
 .ios .modal-fullscreen {
   .modal-wrapper {
       top: 26px;
+  }
+}
+
+.toast-style{
+  /*ionic bug, default 700px*/
+  .toast-wrapper  {
+      max-width: auto;
   }
 }
 

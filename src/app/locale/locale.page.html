@@ -1,16 +1,15 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>Change Locale</ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content padding>
-  <ng-template ngFor let-locale [ngForOf]="locales">
+<ion-item style="--background:transparent;" lines="none" color="light">
+    <ion-label *ngIf="data.getCurrentLocale()!='en-US'">语言(Language)</ion-label>
+    <ion-label *ngIf="data.getCurrentLocale()=='en-US'">Language</ion-label>
+    <ion-icon slot="end" name="close" (click)="close()" color="dark"></ion-icon>
+</ion-item>
+<ion-content color="transparent">
+  <ng-template ngFor let-locale [ngForOf]="data.Locales">
       <ion-item (click)="changeLocale(locale.Name)" *ngIf="locale.Name!=orgLocale">
           <ion-icon slot="start" name="radio-button-off"></ion-icon>
           <ion-label>{{locale.Description}}</ion-label>
       </ion-item>
-      <ion-item (click)="changeLocale(locale.Name)" color="secondary" *ngIf="locale.Name==orgLocale">
+      <ion-item (click)="changeLocale(locale.Name)" color="light" *ngIf="locale.Name==orgLocale">
           <ion-icon slot="start" name="radio-button-on"></ion-icon>
           <ion-label>{{locale.Description}}</ion-label>
       </ion-item>

@@ -9,9 +9,6 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
-import { AppVersion } from '@ionic-native/app-version/ngx';
-import { AppUpdate } from '@ionic-native/app-update/ngx';
-
 import { DataService } from './data.service';
 
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
@@ -24,24 +21,28 @@ import { LocalePage } from './locale/locale.page';
 import { LocalNotifications } from '@ionic-native/local-notifications/ngx';
 
 import { JsonpModule } from '@angular/http';
-import { SettingsPage } from './settings/settings.page';
-import { SearchPage } from './search/search.page';
 import { NoticePopPage } from './notice-pop.page';
 
+import { Network } from '@ionic-native/network/ngx';
+import { AppVersion } from '@ionic-native/app-version/ngx';
+
+import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
+
+import { SettingAboutPage } from './setting-about/setting-about.page';
+
+import { AppRate } from '@ionic-native/app-rate/ngx';
 
 @NgModule({
     declarations: [
         AppComponent,
         LocalePage,
-        SettingsPage,
-        SearchPage,
         NoticePopPage,
+        SettingAboutPage,
     ],
     entryComponents: [
         LocalePage,
-        SettingsPage,
-        SearchPage,
         NoticePopPage,
+        SettingAboutPage,
     ],
     imports: [
         BrowserModule, 
@@ -63,9 +64,11 @@ import { NoticePopPage } from './notice-pop.page';
         SplashScreen,
         { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
         AppVersion,
-        AppUpdate,
         DataService,
         LocalNotifications,
+        Network,
+        InAppBrowser,
+        AppRate,
     ],
     bootstrap: [AppComponent]
 })
