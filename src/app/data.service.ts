@@ -190,7 +190,6 @@ export class DataService {
                 newIdSet.add(`LiveStatus_${scenario['Id']}_${incident['Id']}`)
             })
         });
-        console.log(newIdSet)
 
         this.subArray.forEach((subArrayItem)=>{
             if(!newIdSet.has(subArrayItem.Id)){
@@ -235,6 +234,7 @@ export class DataService {
                         if(item.Id==notice.Id)
                             this.noticeArray.splice(index, 1);
                     })
+                    this.localStorageService.store("LiveStatus_NoticeArray", this.noticeArray);
                 }
             }]
         });
@@ -245,6 +245,9 @@ export class DataService {
 
     getCurrentLocale(){
         return this.localStorageService.retrieve("LiveStatus_Settings_Locale");
+    }
+    setCurrentLocale(locale){
+        return this.localStorageService.store("LiveStatus_Settings_Locale", locale);
     }
 
     getCurrentShowNotify(){

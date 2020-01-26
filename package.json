@@ -24,6 +24,7 @@
     "@ionic-native/app-update": "^5.0.0",
     "@ionic-native/app-version": "^5.19.1",
     "@ionic-native/core": "^5.0.0",
+    "@ionic-native/globalization": "^5.19.1",
     "@ionic-native/in-app-browser": "^5.19.1",
     "@ionic-native/local-notifications": "^5.19.1",
     "@ionic-native/network": "^5.19.1",

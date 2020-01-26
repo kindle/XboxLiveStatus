@@ -21,7 +21,6 @@ import { LocalePage } from './locale/locale.page';
 import { LocalNotifications } from '@ionic-native/local-notifications/ngx';
 
 import { JsonpModule } from '@angular/http';
-import { NoticePopPage } from './notice-pop.page';
 
 import { Network } from '@ionic-native/network/ngx';
 import { AppVersion } from '@ionic-native/app-version/ngx';
@@ -30,18 +29,17 @@ import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 
 import { SettingAboutPage } from './setting-about/setting-about.page';
 
+import { Globalization } from '@ionic-native/globalization/ngx';
 import { AppRate } from '@ionic-native/app-rate/ngx';
 
 @NgModule({
     declarations: [
         AppComponent,
         LocalePage,
-        NoticePopPage,
         SettingAboutPage,
     ],
     entryComponents: [
         LocalePage,
-        NoticePopPage,
         SettingAboutPage,
     ],
     imports: [
@@ -69,6 +67,7 @@ import { AppRate } from '@ionic-native/app-rate/ngx';
         Network,
         InAppBrowser,
         AppRate,
+        Globalization,
     ],
     bootstrap: [AppComponent]
 })
