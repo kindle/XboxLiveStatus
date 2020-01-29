@@ -27,25 +27,27 @@
                 </ion-list>
                 <br>
                 <ion-list class="service-list scroll-list">
-                <ion-list-header *ngIf="data.noticeArray&&data.noticeArray.length>0">
-                    <h1>Notifications</h1>
-                </ion-list-header>
-                <ion-item lines="none" style="--background: transparent" 
-                    *ngFor="let notice of data.noticeArray">
-                    <ion-avatar slot="start" class="avatar-top incident-icon-container">
-                        <img src="/assets/icon/UpAndRunning_icon.png" class="incident-icon">
-                    </ion-avatar>
-                    <div slot="start" class="service-title">
-                        <h5>
-                            {{notice["Name"]}}
-                        </h5>
-                        <h5>Up and Running</h5>
-                        <h5 style="color:#cdcdcd;">
-                            {{notice["Time"] | date: 'yyyy-MM-dd HH:mm:ss'}}
-                        </h5>
-                    </div>
-                    <ion-icon slot="end" name="notifications-off" color="light" (click)="data.confirmDelete(notice)" ></ion-icon>
-                </ion-item>
+                    <ion-list-header *ngIf="data.noticeArray&&data.noticeArray.length>0">
+                        <h1>Notifications</h1>
+                    </ion-list-header>
+                    <ion-item lines="none" style="--background: transparent" 
+                        *ngFor="let notice of data.noticeArray">
+                        <ion-avatar slot="start" class="avatar-top incident-icon-container">
+                            <img src="/assets/icon/UpAndRunning_icon.png" class="incident-icon">
+                        </ion-avatar>
+                        <div slot="start" class="service-title">
+                            <h5>
+                                {{notice["Name"]}}
+                            </h5>
+                            <div>
+                                <h5>Up and Running</h5>
+                                <ion-icon style="float:right;min-width:25px;min-height: 25px;" name="trash" color="light" (click)="data.confirmDelete(notice)" ></ion-icon>
+                            </div>
+                            <h5 style="color:#cdcdcd;">
+                                {{notice["Time"] | date: 'yyyy-MM-dd HH:mm:ss'}}
+                            </h5>
+                        </div>
+                    </ion-item>
                 </ion-list>
             </ion-slide>
         <ion-slide>

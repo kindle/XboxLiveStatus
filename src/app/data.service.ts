@@ -3,7 +3,7 @@ import { Observable, of } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { catchError, tap } from 'rxjs/operators';
 import { LocalStorageService } from 'ngx-webstorage';
-import { LoadingController, PopoverController, AlertController } from '@ionic/angular';
+import { LoadingController, PopoverController, AlertController, Platform } from '@ionic/angular';
 import { LocalNotifications } from '@ionic-native/local-notifications/ngx';
 import { AppVersion } from '@ionic-native/app-version/ngx';
 import { AppRate } from '@ionic-native/app-rate/ngx';
@@ -46,7 +46,28 @@ export class DataService {
     }
 
     subArray;
-    noticeArray;
+    //noticeArray;
+    noticeArray = [{
+        Id:1, 
+        Name: 'Destiny 2',
+        Time: this.utcToLocal('2020-01-28 17:00:24'),
+        Message: 'test',
+        Devices: 'test'
+    },
+    {
+        Id:2, 
+        Name: `Tom Clancy's Ghost Recon@Breadpoint`,
+        Time: this.utcToLocal('2020-01-28 17:00:24'),
+        Message: 'test',
+        Devices: 'test'
+    },
+    {
+        Id:3, 
+        Name: 'World of Tanks: Mercenaries',
+        Time: this.utcToLocal('2020-01-28 17:00:24'),
+        Message: 'test',
+        Devices: 'test'
+    }];
 
     showTabText = false;
     hideTabText(){
@@ -62,6 +83,7 @@ export class DataService {
         private alertController: AlertController,
         private appVersion: AppVersion,
         private appRate: AppRate,
+        private platform: Platform,
     ) {}
 
     overall = {
@@ -103,7 +125,7 @@ export class DataService {
         this.initCache("LiveStatus_Settings_ShowNotify", this.settings.showNotify, true);
         this.initCache("LiveStatus_Settings_Locale", this.settings.locale, 'en-US');
         this.initCache("LiveStatus_SubArray", this.subArray, []);
-        this.initCache("LiveStatus_NoticeArray", this.noticeArray, []);
+        //this.initCache("LiveStatus_NoticeArray", this.noticeArray, []);
         
 
         let cachedOverall = this.localStorageService.retrieve("LiveStatus_Overall");
@@ -328,16 +350,41 @@ export class DataService {
     }
 
 
-    async like(){
-        this.appRate.preferences = {
-            usesUntilPrompt: 3,
-            storeAppURL: {
-                ios: '1481532281',
-                android: 'market://details?id=com.reddah.app',
-                windows: 'ms-windows-store://review/?ProductId=9nblggh0b2b9'
-            }
-        }
-          
-        this.appRate.promptForRating(false);
+    like(){
+        this.platform.ready().then(() => {
+            
+            this.appRate.preferences = {
+                useLanguage : 'en',
+                displayAppName: 'Live Status',
+                usesUntilPrompt: 2,
+                promptAgainForEachNewVersion: false,
+                storeAppURL: {
+                    ios: '1481532281',
+                    android: 'market://details?id=com.reddah.app',
+                    windows: 'ms-windows-store://pdp/?ProductId=9nblggh0b2b9',
+                    windows8: 'ms-windows-store:Review?name=9nblggh0b2b9'
+                },
+                customLocale: {
+                    title: 'Do you enjoy %@?',
+                    message: 'If you enjoy using %@, would you mind taking a moment to rate it? Thanks so much!',
+                    cancelButtonLabel: 'No, Thanks',
+                    //laterButtonLabel: 'Remind Me Later',
+                    rateButtonLabel: 'Rate It Now'
+                },
+                callbacks: {
+                onRateDialogShow: function(callback){
+                    console.log('rate dialog shown!');
+                    alert(1)
+                },
+                onButtonClicked: function(buttonIndex){
+                    console.log('Selected index: -> ' + buttonIndex);
+                    alert(2)
+                }
+                }
+            };
+
+            // Opens the rating immediately no matter what preferences you set
+            this.appRate.promptForRating(true);
+        });
     }
 }

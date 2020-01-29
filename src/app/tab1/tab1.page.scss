@@ -1,16 +1,16 @@
 .parallax-bg {
-  position: absolute;
-  left: -50%;
-  top: 0;
-  width: 500%;
-  height: 100%;
-  -webkit-background-size: cover;
-  background-size: cover;
-  background-position: center;
+    position: absolute;
+    left: -50%;
+    top: 0;
+    width: 500%;
+    height: 100%;
+    -webkit-background-size: cover;
+    background-size: cover;
+    background-position: center;
 }
 
 ion-slides {
-  height: auto;
+    height: auto;
 }
 
 .overall-service-list{
@@ -27,6 +27,7 @@ ion-slides {
 .service-title {
     margin-left: 20px;
     margin-right:0;
+    width: 100%;
 }
 
 .notify-box-green {

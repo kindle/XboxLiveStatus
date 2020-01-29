@@ -4,13 +4,14 @@ import { Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 
-import {TranslateService} from '@ngx-translate/core';
+import { TranslateService } from '@ngx-translate/core';
 
 import { LocalStorageService } from 'ngx-webstorage';
 import { DataService } from './data.service';
 
 import { Globalization } from '@ionic-native/globalization';
 import { Network } from '@ionic-native/network/ngx';
+
 
 @Component({
     selector: 'app-root',
@@ -28,24 +29,6 @@ export class AppComponent {
         private zone: NgZone,
     ) {
         this.initializeApp();
-        this.initLocale();
-
-        this.network.onDisconnect().subscribe(() => {
-            this.data.settings.networkConnected = false;
-        });
-        
-        this.network.onConnect().subscribe(() => {
-            this.data.settings.networkConnected = false;
-        });
-
-        let currentFontSize = this.data.getCurrentFontSize();
-        if(!currentFontSize)
-            currentFontSize = 4;
-        document.documentElement.style.setProperty(`--ion-font-size`, this.data.fontSizeMap.get(currentFontSize));
-        this.data.settings.fontSize = currentFontSize;
-        this.data.settings.showNotify = this.data.getCurrentShowNotify();
-        
-
     }
 
     initLocale(){
@@ -82,8 +65,26 @@ export class AppComponent {
 
     initializeApp() {
         this.platform.ready().then(() => {
+            this.initLocale();
+
+            this.network.onDisconnect().subscribe(() => {
+                this.data.settings.networkConnected = false;
+            });
+            
+            this.network.onConnect().subscribe(() => {
+                this.data.settings.networkConnected = true;
+            });
+
+            let currentFontSize = this.data.getCurrentFontSize();
+            if(!currentFontSize)
+                currentFontSize = 4;
+            document.documentElement.style.setProperty(`--ion-font-size`, this.data.fontSizeMap.get(currentFontSize));
+            this.data.settings.fontSize = currentFontSize;
+            this.data.settings.showNotify = this.data.getCurrentShowNotify();
+        
+            this.statusBar.overlaysWebView(false);
             this.statusBar.styleDefault();
-            this.splashScreen.hide();
+
         });
     }
 }
