@@ -54,7 +54,7 @@ export class Tab2Page implements OnInit {
     }
 
     async changeFontSize(){
-        document.documentElement.style.setProperty(`--ion-font-size`, this.data.fontSizeMap.get(this.data.settings.fontSize));
+        this.data.updateUIFontSize(this.data.settings.fontSize);
         this.localStorageService.store("LiveStatus_Settings_FontSize", this.data.settings.fontSize);
     }
   

@@ -46,7 +46,8 @@ export class DataService {
     }
 
     subArray;
-    //noticeArray;
+    noticeArray;
+    /*
     noticeArray = [{
         Id:1, 
         Name: 'Destiny 2',
@@ -68,6 +69,7 @@ export class DataService {
         Message: 'test',
         Devices: 'test'
     }];
+    */
 
     showTabText = false;
     hideTabText(){
@@ -125,7 +127,7 @@ export class DataService {
         this.initCache("LiveStatus_Settings_ShowNotify", this.settings.showNotify, true);
         this.initCache("LiveStatus_Settings_Locale", this.settings.locale, 'en-US');
         this.initCache("LiveStatus_SubArray", this.subArray, []);
-        //this.initCache("LiveStatus_NoticeArray", this.noticeArray, []);
+        this.initCache("LiveStatus_NoticeArray", this.noticeArray, []);
         
 
         let cachedOverall = this.localStorageService.retrieve("LiveStatus_Overall");
@@ -280,6 +282,13 @@ export class DataService {
         return this.localStorageService.retrieve("LiveStatus_Settings_FontSize");
     }
 
+    updateUIFontSize(fontSize){
+        document.documentElement.style.setProperty(`--ion-font-size`, this.fontSizeMap.get(fontSize)+"px");
+        document.documentElement.style.setProperty(`--ion-font-size-h1`, this.fontSizeMap.get(fontSize)+10+"px");
+        document.documentElement.style.setProperty(`--ion-font-size-h4`, this.fontSizeMap.get(fontSize)+4+"px");
+        document.documentElement.style.setProperty(`--ion-font-size-h5`, this.fontSizeMap.get(fontSize)+2+"px");
+    }
+
     getData(): Observable<any> {
         const serviceUrl = 'http://notice.xbox.com/ServiceStatusv5/'+this.getCurrentLocale(); 
         
@@ -320,16 +329,16 @@ export class DataService {
     ];
 
     fontSizeMap = new Map()
-    .set(1,'12px')
-    .set(2,'13px')
-    .set(3,'14px')
-    .set(4,'15px')
-    .set(5,'16px')
-    .set(6,'17px')
-    .set(7,'18px')
-    .set(8,'19px')
-    .set(9,'20px')
-    .set(10,'21px');
+    .set(1,12)
+    .set(2,13)
+    .set(3,14)
+    .set(4,15)
+    .set(5,16)
+    .set(6,17)
+    .set(7,18)
+    .set(8,19)
+    .set(9,20)
+    .set(10,21);
     
     utcToLocal(str, format="YYYY-MM-DD HH:mm:ss"){
         let localTime = moment.utc(str).toDate();

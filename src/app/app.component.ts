@@ -78,7 +78,7 @@ export class AppComponent {
             let currentFontSize = this.data.getCurrentFontSize();
             if(!currentFontSize)
                 currentFontSize = 4;
-            document.documentElement.style.setProperty(`--ion-font-size`, this.data.fontSizeMap.get(currentFontSize));
+            this.data.updateUIFontSize(currentFontSize);
             this.data.settings.fontSize = currentFontSize;
             this.data.settings.showNotify = this.data.getCurrentShowNotify();
         
