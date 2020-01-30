@@ -19,10 +19,10 @@
         </ion-list>
         <ion-list style="background-color:transparent;" (click)="changeLocale()">
           <ion-list-header>
-                <ion-label color="light">语言</ion-label>
+              <ion-label color="light">语言</ion-label>
           </ion-list-header>
           <ion-item lines="none" style="--background:transparent;">
-              <ion-icon slot="start" name="globe" color="light" size="medium"></ion-icon>
+              <ion-icon slot="start" name="globe" color="light" size="large"></ion-icon>
               <ion-text color="light">{{currentLocaleInfo}}</ion-text>
               <ion-icon name="ios-arrow-forward" slot="end" size="small" color="light"></ion-icon>
           </ion-item>
@@ -32,22 +32,22 @@
               <ion-label color="light">服务通知</ion-label>
           </ion-list-header>
           <ion-item lines="none" style="--background:transparent;">
-            <ion-label color="light">{{data.settings.showNotify?"打开":"关闭"}}</ion-label>
-            <ion-toggle [(ngModel)]="data.settings.showNotify" color="success" slot="end" (ionChange)="changeNotify()"></ion-toggle>
+              <ion-label color="light">{{data.settings.showNotify?"打开":"关闭"}}</ion-label>
+              <ion-toggle [(ngModel)]="data.settings.showNotify" color="success" slot="end" (ionChange)="changeNotify()"></ion-toggle>
           </ion-item>
         </ion-list>
         <ion-list style="background-color:transparent;" (click)="clearCache()">
           <ion-item lines="none" style="--background:transparent;">
-              <ion-icon slot="start" name="ios-trash" color="light" size="medium"></ion-icon>
+              <ion-icon slot="start" name="trash" color="light" size="large"></ion-icon>
               <ion-label color="light">清除缓存</ion-label>
               <ion-icon name="ios-arrow-forward" color="light" slot="end" size="small"></ion-icon>
           </ion-item>
         </ion-list>
         <ion-list style="background-color:transparent;" (click)="about()">
           <ion-item lines="none" style="--background:transparent;">
-              <ion-icon class="menuIcon" slot="start" name="information-circle-outline" color="light" size="medium"></ion-icon>
+              <ion-icon class="menuIcon" slot="start" name="information-circle-outline" color="light" size="large"></ion-icon>
               <ion-label color="light">关于</ion-label>
-              <ion-icon name="ios-arrow-forward" slot="end" size="small" color="light"></ion-icon>
+              <ion-icon name="ios-arrow-forward" color="light" slot="end" size="small"></ion-icon>
           </ion-item>
         </ion-list>
         <ion-item lines="none" style="--background:transparent;">

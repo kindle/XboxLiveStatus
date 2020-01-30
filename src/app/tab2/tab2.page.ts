@@ -1,10 +1,11 @@
-import { Component, ViewChild, OnInit } from '@angular/core';
+import { Component, ViewChild, OnInit, NgZone } from '@angular/core';
 import { IonSlides, Platform, ModalController, NavController, AlertController } from '@ionic/angular';
 import { LocalStorageService } from 'ngx-webstorage';
 import { Router } from '@angular/router';
 import { LocalePage } from '../locale/locale.page';
 import { DataService } from '../data.service';
 import { SettingAboutPage } from '../setting-about/setting-about.page';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-tab2',
@@ -21,6 +22,8 @@ export class Tab2Page implements OnInit {
         private router: Router,
         public data: DataService,
         private alertController: AlertController,
+        private zone: NgZone,
+        private translate: TranslateService,
     ){
     }
 
@@ -43,8 +46,15 @@ export class Tab2Page implements OnInit {
         await changeLocaleModal.present();
         const { data } = await changeLocaleModal.onDidDismiss();
         if(data){
-            console.log(data)
-            window.location.reload();
+            this.zone.run(()=>{
+                let newLocale = this.data.getCurrentLocale();
+                this.translate.setDefaultLang(newLocale);
+                
+                this.data.Locales.forEach((value, index, arr)=>{
+                    if(newLocale===value.Name)
+                        this.currentLocaleInfo = value.Description;
+                });
+            })
         }
     }
 
