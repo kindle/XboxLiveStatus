@@ -1,8 +1,42 @@
 {
-    "Menu.Recommend": "Recommander",
-    "Menu.Contact": "Message",
-    "Menu.Find": "Découvrir",
-    "Menu.About": "Moi",
-    "Article.Loading": "Un instant",
-    "Article.Comments": "commentaires"
+  "Common":{
+      "Network": "沒有互聯網連接",
+      "On":"開啟",
+      "Off":"關閉"
+  },
+
+  "Service":{
+      "Title":"狀態",
+      "Overall":"Xbox Live 狀態",
+      "Core":"核心服務",
+      "Games":"遊戲",
+      "Apps":"應用程式",
+      "Notify":"通知"
+  },
+
+  "Status":{
+      "Ok":"啟動並執行中",
+      "Alert":"服務警示"
+  },
+
+  "Notify":{
+      "Subscribe":"當服務或應用程式啟動並執行時通知我",
+      "Thanks":"感謝您。我們將在服務或應用程式啟動並執行時通知您。"
+  },
+
+  "Settings":{
+      "Title":"設置",
+      "FontSizeTitle":"字體大小",
+      "LanguageTitle":"語言",
+      "NotifyTitle":"服務通知",
+      "CacheTitle":"清除緩存",
+      "AboutTitle":"關於"
+  },
+
+  "Menu":{
+      "Refresh":"重繪",
+      "Settings":"設置",
+      "Search":"搜尋",
+      "Like":"讚"
   }
+}

@@ -27,7 +27,7 @@
                         </h5>
                         <div class="notify-box-green" *ngIf="!data.isSubscribed(scenario, incident)"
                             (click)="data.subscribe(scenario, incident)">
-                            <h5>{{ 'Notify.subscribe' | translate }}</h5>
+                            <h5>{{ 'Notify.Subscribe' | translate }}</h5>
                         </div>
                         <div class="notify-box-light" *ngIf="data.isSubscribed(scenario, incident)">
                             <h5 style="color:#cdcdcd;">{{ 'Notify.Thanks' | translate }}</h5>

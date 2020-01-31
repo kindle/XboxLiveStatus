@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild, Input, Output, EventEmitter } from '@angu
 import { ModalController, Platform, AlertController } from '@ionic/angular';
 import { DataService } from '../data.service';
 import { LocalStorageService } from 'ngx-webstorage';
+import { TranslateService } from '@ngx-translate/core';
 //import { AngularFireDatabase } from '@angular/fire/database';
 
 @Component({
@@ -20,10 +21,8 @@ export class ServiceBoxComponent implements OnInit {
 
     constructor(
         public data: DataService,
-        private localStorageService: LocalStorageService,
         private alertController: AlertController,
     ) { 
-        
     }
 
     async ngOnInit() {

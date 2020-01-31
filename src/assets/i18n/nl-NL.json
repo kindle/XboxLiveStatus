@@ -1,8 +1,42 @@
 {
-    "Menu.Recommend": "Recommander",
-    "Menu.Contact": "Message",
-    "Menu.Find": "Découvrir",
-    "Menu.About": "Moi",
-    "Article.Loading": "Un instant",
-    "Article.Comments": "commentaires"
+  "Common":{
+      "Network": "No Internet Connection",
+      "On":"On",
+      "Off":"Off"
+  },
+
+  "Service":{
+      "Title":"Live Status",
+      "Overall":"Xbox Live Status",
+      "Core":"Core Services",
+      "Games":"Games",
+      "Apps":"Apps",
+      "Notify":"Notifications"
+  },
+
+  "Status":{
+      "Ok":"Up and Running",
+      "Alert":"Service Alert"
+  },
+
+  "Notify":{
+      "Subscribe":"Notify me when this service or app is up and running",
+      "Thanks":"Thank you. We will notify you when service or app is up and running."
+  },
+
+  "Settings":{
+      "Title":"Settings",
+      "FontSizeTitle":"Font Size",
+      "LanguageTitle":"Language",
+      "NotifyTitle":"Service Up Notification",
+      "CacheTitle":"Cache",
+      "AboutTitle":"About"
+  },
+
+  "Menu":{
+      "Refresh":"Refresh",
+      "Settings":"Settings",
+      "Search":"Search",
+      "Like":"Like"
   }
+}
