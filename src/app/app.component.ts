@@ -47,24 +47,28 @@ export class AppComponent {
                     this.translate.setDefaultLang(defaultLocale);
                 });
             }
-            else{
+            else{                
                 this.data.setCurrentLocale(defaultLocale);
                 this.translate.setDefaultLang(defaultLocale);
                 this.translate.use(defaultLocale);
             }
-            this.data.settings.locale = this.data.getCurrentLocale();
-
         }
         else{
             this.zone.run(()=>{
                 this.translate.setDefaultLang(currentLocale);
                 this.translate.use(currentLocale);
             })
+            this.data.setCurrentLocale(currentLocale);
         }
+        
     }
 
     initializeApp() {
         this.platform.ready().then(() => {
+            this.statusBar.overlaysWebView(false);
+            this.statusBar.styleDefault();
+            this.splashScreen.hide();
+
             this.initLocale();
 
             this.network.onDisconnect().subscribe(() => {
@@ -82,8 +86,6 @@ export class AppComponent {
             this.data.settings.fontSize = currentFontSize;
             this.data.settings.showNotify = this.data.getCurrentShowNotify();
         
-            this.statusBar.overlaysWebView(false);
-            this.statusBar.styleDefault();
 
         });
     }

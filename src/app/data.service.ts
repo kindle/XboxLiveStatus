@@ -9,6 +9,7 @@ import { AppVersion } from '@ionic-native/app-version/ngx';
 import { AppRate } from '@ionic-native/app-rate/ngx';
 import * as moment from 'moment';
 import { Locale } from './models/locale';
+import { TranslateService } from '@ngx-translate/core';
 
 @Injectable({
     providedIn: 'root'
@@ -86,6 +87,7 @@ export class DataService {
         private appVersion: AppVersion,
         private appRate: AppRate,
         private platform: Platform,
+        private translate: TranslateService,
     ) {}
 
     overall = {
@@ -270,8 +272,10 @@ export class DataService {
     getCurrentLocale(){
         return this.localStorageService.retrieve("LiveStatus_Settings_Locale");
     }
+    
     setCurrentLocale(locale){
-        return this.localStorageService.store("LiveStatus_Settings_Locale", locale);
+        this.settings.locale = locale;
+        this.localStorageService.store("LiveStatus_Settings_Locale", locale);
     }
 
     getCurrentShowNotify(){
@@ -356,6 +360,27 @@ export class DataService {
 
     private log(message: string) {
         console.log(message);
+    }
+
+    clearCache(){
+        this.localStorageService.clear("LiveStatus_Overall");
+        this.localStorageService.clear("LiveStatus_CoreServices");
+        this.localStorageService.clear("LiveStatus_Games");
+        this.localStorageService.clear("LiveStatus_Apps");
+        this.coreServices = [];
+        this.gameServices = [];
+        this.appServices = [];
+
+        this.localStorageService.clear("LiveStatus_SubArray");
+        this.localStorageService.clear("LiveStatus_NoticeArray");
+        this.subArray = [];
+        this.noticeArray = [];
+    }
+
+    reloadLocaleSettings(){
+        let currentLocale = this.getCurrentLocale();
+        this.translate.setDefaultLang(currentLocale);
+        this.translate.use(currentLocale);
     }
 
 

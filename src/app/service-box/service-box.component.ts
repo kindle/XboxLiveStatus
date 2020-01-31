@@ -30,17 +30,17 @@ export class ServiceBoxComponent implements OnInit {
     }
 
     async message(scenario, incident){
-        let message = "ID: "+scenario["Id"]+" "+ incident["Id"] + "<br><br>";
+        let message = this.data.utcToLocal(incident["Begin"], 'YYYY-MM-DD HH:mm:ss') + "<br><br>";
         if(incident["Stage"]["Message"]!==""){ 
             message += incident["Stage"]["Message"] + "<br><br>";
         }
-        message += scenario["Devices"].map(d=>d["Name"]).join(",") + "<br><br>";
-        message += this.data.utcToLocal(incident["Begin"], 'YYYY-MM-DD HH:mm:ss')
+        message += scenario["Devices"].map(d=>d["Name"]).join(", ") + "<br><br>";
+        message += "ID: "+scenario["Id"]+" "+ incident["Id"]
 
         const alert = await this.alertController.create({
-            //header: this.translate.instant("Menu.PressPay"),
             header: scenario["Name"],
             message: message,
+            cssClass: 'outage-message',
         });
 
         await alert.present();

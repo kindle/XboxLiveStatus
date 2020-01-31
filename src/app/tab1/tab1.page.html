@@ -1,6 +1,6 @@
 <ion-item style="--background:transparent;" lines="none" *ngIf="!data.settings.networkConnected">
-    <ion-icon slot="start" name="wifi" color="light"></ion-icon>
-    <ion-label color="light">No network connection</ion-label>
+    <ion-icon slot="start" name="wifi" color="light" size="large"></ion-icon>
+    <ion-label color="light">{{ 'Common.Network' | translate }}</ion-label>
 </ion-item>
 <ion-content color="dark" (click)="data.hideTabText()">
     <ion-slides #mySlider style="height: 100%;" [options]="slideOpts" (ionSlideDidChange)="onSlideChanged()" >
@@ -8,7 +8,7 @@
             <ion-slide style="display:flex;flex-flow:column;">
                 <ion-list class="overall-service-list">
                     <ion-list-header>
-                        <h1>Overall Status</h1>
+                        <h1>{{ 'Service.Title' | translate }}</h1>
                     </ion-list-header>
                     <ion-item lines="none" style="--background: transparent">
                         <ion-avatar slot="start" class="avatar-top incident-icon-container">
@@ -18,9 +18,9 @@
                             class="incident-icon">
                         </ion-avatar>
                         <div slot="start" class="service-title">
-                            <h4>Xbox Live Status</h4>
-                            <h5 *ngIf="data.overall['Id']==1">Up and Running</h5>
-                            <h5 *ngIf="data.overall['Id']==2">Service Alert</h5>
+                            <h4>{{ 'Service.Overall' | translate }}</h4>
+                            <h5 *ngIf="data.overall['Id']==1">{{ 'Status.Ok' | translate }}</h5>
+                            <h5 *ngIf="data.overall['Id']==2">{{ 'Status.Alert' | translate }}</h5>
                             <p style="color:#cdcdcd;">{{data.overall['LastUpdated'] | date: 'yyyy-MM-dd HH:mm:ss'}}</p>
                         </div>
                     </ion-item>
@@ -28,7 +28,7 @@
                 <br>
                 <ion-list class="service-list scroll-list">
                     <ion-list-header *ngIf="data.noticeArray&&data.noticeArray.length>0">
-                        <h1>Notifications</h1>
+                        <h1>{{ 'Service.Notify' | translate }}</h1>
                     </ion-list-header>
                     <ion-item lines="none" style="--background: transparent" 
                         *ngFor="let notice of data.noticeArray">
@@ -40,7 +40,7 @@
                                 {{notice["Name"]}}
                             </h5>
                             <div>
-                                <h5>Up and Running</h5>
+                                <h5>{{ 'Status.Ok' | translate }}</h5>
                                 <ion-icon style="float:right;min-width:25px;min-height: 25px;" name="trash" color="light" (click)="data.confirmDelete(notice)" ></ion-icon>
                             </div>
                             <h5 style="color:#cdcdcd;">
@@ -51,13 +51,13 @@
                 </ion-list>
             </ion-slide>
         <ion-slide>
-            <app-service-box title="Core Services" [services]="data.coreServices"></app-service-box>
+            <app-service-box title="{{ 'Service.Core' | translate }}" [services]="data.coreServices"></app-service-box>
         </ion-slide>
         <ion-slide>
-            <app-service-box title="Games" [services]="data.gameServices"></app-service-box>
+            <app-service-box title="{{ 'Service.Games' | translate }}" [services]="data.gameServices"></app-service-box>
         </ion-slide>
         <ion-slide>
-            <app-service-box title="Apps" [services]="data.appServices"></app-service-box>
+            <app-service-box title="{{ 'Service.Apps' | translate }}" [services]="data.appServices"></app-service-box>
         </ion-slide>
     </ion-slides>
 </ion-content>

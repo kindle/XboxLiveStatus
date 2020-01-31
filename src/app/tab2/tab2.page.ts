@@ -8,9 +8,9 @@ import { SettingAboutPage } from '../setting-about/setting-about.page';
 import { TranslateService } from '@ngx-translate/core';
 
 @Component({
-  selector: 'app-tab2',
-  templateUrl: 'tab2.page.html',
-  styleUrls: ['tab2.page.scss']
+    selector: 'app-tab2',
+    templateUrl: 'tab2.page.html',
+    styleUrls: ['tab2.page.scss']
 })
 export class Tab2Page implements OnInit {
 
@@ -25,6 +25,10 @@ export class Tab2Page implements OnInit {
         private zone: NgZone,
         private translate: TranslateService,
     ){
+        this.zone.run(()=>{
+            let newLocale = this.data.getCurrentLocale();
+            this.translate.use(newLocale);
+        });
     }
 
     currentLocaleInfo;
@@ -83,36 +87,21 @@ export class Tab2Page implements OnInit {
             }, {
                 text: "Yes",
                 handler: () => {
-                    
+                    this.data.clearCache();
                 }
             }]
         });
 
         await alert.present();
-
-        /*
-        this.cacheService.clearAll();
-        //clear article block _options
-        this.localStorageService.store("reddah_articles_"+this.userName, JSON.stringify([]));
-        this.localStorageService.store("reddah_article_ids_"+this.userName, JSON.stringify([]));
-        this.localStorageService.store("reddah_article_groups_"+this.userName, JSON.stringify([]));
-        this.localStorageService.store("reddah_article_usernames_"+this.userName, JSON.stringify([]));
-        this.cacheService.clearGroup("HomePage");
-        //clear pub history
-        this.localStorageService.clear("Reddah_Recent_3_"+this.userName);
-        //clear mini history
-        this.localStorageService.clear("Reddah_Recent_4_"+this.userName);
-        //this.localStorageService.clear(); //this will force logout
-        this.data.toast(this.translate.instant("Common.CacheClear"));*/
     }
 
     async about(){
-      const modal = await this.modalController.create({
-          component: SettingAboutPage,
-          componentProps: {},
-          cssClass: "modal-fullscreen",
-      });
-      
-      await modal.present();
+        const modal = await this.modalController.create({
+            component: SettingAboutPage,
+            componentProps: {},
+            cssClass: "modal-fullscreen",
+        });
+        
+        await modal.present();
     }
 }

@@ -13,22 +13,21 @@ export class TabsPage {
 
     constructor(
         public data : DataService,
-        private platform: Platform,
-        private modalController: ModalController,
-        private localStorageService: LocalStorageService,
-        private actionSheetController: ActionSheetController,
         private translate: TranslateService,
-        private alertController: AlertController,
         public loadingController: LoadingController,
-    ) 
-    {
+    ) {
+        let locale = this.data.getCurrentLocale();
+        this.translate.setDefaultLang(locale);
+        this.translate.use(locale);
+
         setInterval(()=>{
             this.data.silenceRefreshStatus()
         }, 1000*60*5)
     }
 
-    async refresh(){
-        await this.data.forceRefreshStatus();
+    refresh(){
+        this.data.reloadLocaleSettings();
+        this.data.forceRefreshStatus();
     }
 
 

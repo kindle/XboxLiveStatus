@@ -48,3 +48,13 @@ ion-loading.custom-loading {
 .scroll-list{
     overflow-y: scroll;
 }
+
+
+.outage-message {
+    max-height: unset !important;
+}
+
+
+.alert-message.sc-ion-alert-md{
+    max-height: unset !important;
+}

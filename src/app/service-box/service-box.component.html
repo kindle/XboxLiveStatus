@@ -11,7 +11,7 @@
         </ion-avatar>
         <div slot="start" class="service-title">
             <h4>{{service["Name"]}}</h4>
-            <h5 *ngIf="service['Status']['Id']==1">Up and Running</h5>
+            <h5 *ngIf="service['Status']['Id']==1">{{ 'Status.Ok' | translate }}</h5>
             <p *ngIf="service['Status']['Id']==1" style="color:#cdcdcd;">
                 {{data.overall['LastUpdated'] | date: 'yyyy-MM-dd HH:mm:ss'}}
             </p>
@@ -27,10 +27,10 @@
                         </h5>
                         <div class="notify-box-green" *ngIf="!data.isSubscribed(scenario, incident)"
                             (click)="data.subscribe(scenario, incident)">
-                            <h5>Notify me when this service or app is up and running</h5>
+                            <h5>{{ 'Notify.subscribe' | translate }}</h5>
                         </div>
                         <div class="notify-box-light" *ngIf="data.isSubscribed(scenario, incident)">
-                            <h5 style="color:#cdcdcd;">Thank you. We will notify you when service or app is up and running.</h5>
+                            <h5 style="color:#cdcdcd;">{{ 'Notify.Thanks' | translate }}</h5>
                         </div>
                     </div>
                 </div>

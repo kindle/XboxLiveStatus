@@ -35,7 +35,6 @@ export class Tab1Page {
         private alertController: AlertController,
         private translate: TranslateService,
     ){
-        let locale = this.localStorageService.retrieve("LiveStatus_Locale");
     }
 
   
@@ -59,35 +58,17 @@ export class Tab1Page {
         return this.localStorageService.retrieve("LiveStatus_"+scenarioId+"_"+incidentId)===true;
     }
   
-    async message(scenario, incident){
-        let message = "ID: "+scenario["Id"]+" "+ incident["Id"] + "<br><br>";
-        if(incident["Stage"]["Message"]!==""){ 
-            message += incident["Stage"]["Message"] + "<br><br>";
-        }
-        message += scenario["Devices"].map(d=>d["Name"]).join(",") + "<br><br>";
-        message += this.data.utcToLocal(incident["Begin"], 'YYYY-MM-DD HH:mm:ss')
-  
-        const alert = await this.alertController.create({
-            //header: this.translate.instant("Menu.PressPay"),
-            header: scenario["Name"],
-            message: message,
-        });
-  
-        await alert.present();
-    }
-  
-  
 
-  subText(str: string, n: number) {
-    var r = /[^\u4e00-\u9fa5]/g;
-    if (str.replace(r, "mm").length <= n) { return str; }
-    var m = Math.floor(n/2);
-    for (var i = m; i < str.length; i++) {
-        if (str.substr(0, i).replace(r, "mm").length >= n) {
-            return str.substr(0, i) + "...";
+    subText(str: string, n: number) {
+        var r = /[^\u4e00-\u9fa5]/g;
+        if (str.replace(r, "mm").length <= n) { return str; }
+        var m = Math.floor(n/2);
+        for (var i = m; i < str.length; i++) {
+            if (str.substr(0, i).replace(r, "mm").length >= n) {
+                return str.substr(0, i) + "...";
+            }
         }
+        return str;
     }
-    return str;
-  }
 
 }

@@ -1,7 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, NgZone } from '@angular/core';
 import {ModalController} from '@ionic/angular';
-import { LocalStorageService } from 'ngx-webstorage';
-import { Locale } from '../locale';
 
 import { TranslateService } from '@ngx-translate/core';
 import { DataService } from '../data.service';
@@ -15,10 +13,10 @@ export class LocalePage implements OnInit {
     @Input() orgLocale: string;
 
     constructor(
-        private localStorageService: LocalStorageService,
         private modalController: ModalController,
         private translate: TranslateService,
         public data: DataService,
+        private zone: NgZone,
         ) {
     }
 
@@ -26,8 +24,10 @@ export class LocalePage implements OnInit {
     }
     
     async changeLocale(selector: string) {
-        this.localStorageService.store("LiveStatus_Settings_Locale", selector);
+        this.data.setCurrentLocale(selector)
         this.translate.use(selector);
+        this.data.clearCache();
+
         await this.modalController.dismiss(selector!==this.orgLocale);
     }
 

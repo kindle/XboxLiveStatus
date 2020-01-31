@@ -1,8 +1,42 @@
 {
-    "Menu.Recommend": "推荐",
-    "Menu.Contact": "消息",
-    "Menu.Find": "发现",
-    "Menu.About": "我",
-    "Article.Loading": "请稍等...",
-    "Article.Comments": "评论"
+    "Common":{
+        "Network": "没有网络连接",
+        "On":"打开",
+        "Off":"关闭"
+    },
+
+    "Service":{
+        "Title":"状态",
+        "Overall":"Xbox Live 状态",
+        "Core":"核心服务",
+        "Games":"游戏",
+        "Apps":"应用",
+        "Notify":"通知"
+    },
+
+    "Status":{
+        "Ok":"已启用且在运行",
+        "Alert":"服务警报"
+    },
+
+    "Notify":{
+        "Subscribe":"在启用并运行此服务或应用程序时通知我",
+        "Thanks":"非常感谢。在启用并运行服务或应用程序时，我们将通知您。"
+    },
+
+    "Settings":{
+        "Title":"设置",
+        "FontSizeTitle":"字体大小",
+        "LanguageTitle":"语言",
+        "NotifyTitle":"服务通知",
+        "CacheTitle":"清除缓存",
+        "AboutTitle":"关于"
+    },
+
+    "Menu":{
+        "Refresh":"刷新",
+        "Settings":"设置",
+        "Search":"搜索",
+        "Like":"赞"
+    }
 }
