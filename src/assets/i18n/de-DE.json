@@ -1,17 +1,17 @@
 {
   "Common":{
-      "Network": "No Internet Connection",
-      "On":"On",
-      "Off":"Off"
+      "Network": "Keine Internetverbindung",
+      "On":"Ein",
+      "Off":"Ausschalten"
   },
 
   "Service":{
       "Title":"Live Status",
       "Overall":"Xbox Live Status",
-      "Core":"Core Services",
-      "Games":"Games",
+      "Core":"Zentrale Dienstleistungen",
+      "Games":"Spiele",
       "Apps":"Apps",
-      "Notify":"Notifications"
+      "Notify":"Anmeldungen"
   },
 
   "Status":{
@@ -20,23 +20,23 @@
   },
 
   "Notify":{
-      "Subscribe":"Notify me when this service or app is up and running",
-      "Thanks":"Thank you. We will notify you when service or app is up and running."
+      "Subscribe":"Benachrichtigen Sie mich, wenn dieser Dienst oder diese App wieder läuft",
+      "Thanks":"Vielen Dank. Wir werden Sie kontaktieren, sobald der Dienst oder die App wieder läuft."
   },
 
   "Settings":{
-      "Title":"Settings",
-      "FontSizeTitle":"Font Size",
-      "LanguageTitle":"Language",
-      "NotifyTitle":"Service Up Notification",
-      "CacheTitle":"Cache",
-      "AboutTitle":"About"
+      "Title":"Einstellungen",
+      "FontSizeTitle":"Größe der Schrift",
+      "LanguageTitle":"Sprache",
+      "NotifyTitle":"Anmeldungen",
+      "CacheTitle":"Zwischenspeicher",
+      "AboutTitle":"Über"
   },
 
   "Menu":{
-      "Refresh":"Refresh",
-      "Settings":"Settings",
-      "Search":"Search",
-      "Like":"Like"
+      "Refresh":"Aktualisieren",
+      "Settings":"Einstellungen",
+      "Search":"Suche",
+      "Like":"Wie"
   }
 }
