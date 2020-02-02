@@ -70,8 +70,9 @@ export class SettingAboutPage implements OnInit {
         }
 
         const actionSheet = await this.actionSheetController.create({
-            header: this.translate.instant("About.BuyBeer"),
-            buttons: [{
+            //header: this.translate.instant("Common.BuyBeer"),
+            buttons: [
+            /*{
               text: 'Alipay',
               role: 'destructive',
               cssClass: 'pay-alipay',
@@ -84,7 +85,8 @@ export class SettingAboutPage implements OnInit {
               handler: () => {
                 this.wechatpayQrCode();
               }
-            }, {
+            }, */
+            {
               text: 'Paypal',
               cssClass: 'pay-paypal',
               handler: () => {

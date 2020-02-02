@@ -2,7 +2,13 @@
     "Common":{
         "Network": "没有网络连接",
         "On":"打开",
-        "Off":"关闭"
+        "Off":"关闭",
+        "Yes":"确定",
+        "Cancel":"取消",
+        "ConfirmClear":"清除",
+        "ConfirmClearMessage":"清除缓存",
+        "CurrentVersion":"版本号",
+        "BuyBeer":"请作者喝咖啡"
     },
 
     "Service":{

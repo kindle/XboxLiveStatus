@@ -1,42 +1,48 @@
 {
   "Common":{
-      "Network": "No Internet Connection",
-      "On":"On",
-      "Off":"Off"
+      "Network": "인터넷에 연결하지",
+      "On":"켜짐",
+      "Off":"해제",
+      "Yes":"예",
+      "Cancel":"취소",
+      "ConfirmClear":"명확한",
+      "ConfirmClearMessage":"캐시 지우기",
+      "CurrentVersion":"버전",
+      "BuyBeer":"맥주 좀 사줘"
   },
 
   "Service":{
-      "Title":"Live Status",
-      "Overall":"Xbox Live Status",
-      "Core":"Core Services",
-      "Games":"Games",
-      "Apps":"Apps",
-      "Notify":"Notifications"
+      "Title":"Live 상태",
+      "Overall":"Xbox Live 상태",
+      "Core":"핵심 서비스",
+      "Games":"게임",
+      "Apps":"응용 프로그램",
+      "Notify":"통지"
   },
 
   "Status":{
-      "Ok":"Up and Running",
-      "Alert":"Service Alert"
+      "Ok":"이상 없이 실행 중",
+      "Alert":"서비스 경고"
   },
 
   "Notify":{
-      "Subscribe":"Notify me when this service or app is up and running",
-      "Thanks":"Thank you. We will notify you when service or app is up and running."
+      "Subscribe":"서비스 또는 앱이 정상으로 작동하면 알림",
+      "Thanks":"감사합니다. 서비스 또는 앱이 문제 없이 작동하면 연락 드리겠습니다."
   },
 
   "Settings":{
-      "Title":"Settings",
-      "FontSizeTitle":"Font Size",
-      "LanguageTitle":"Language",
-      "NotifyTitle":"Service Up Notification",
-      "CacheTitle":"Cache",
-      "AboutTitle":"About"
+      "Title":"설치",
+      "FontSizeTitle":"글꼴 크기",
+      "LanguageTitle":"언어",
+      "NotifyTitle":"통지",
+      "CacheTitle":"숨겨진 물건",
+      "AboutTitle":"에 관해"
   },
 
   "Menu":{
-      "Refresh":"Refresh",
-      "Settings":"Settings",
-      "Search":"Search",
-      "Like":"Like"
+      "Refresh":"새로 고침",
+      "Settings":"설치",
+      "Search":"수색",
+      "Like":"마치"
   }
 }

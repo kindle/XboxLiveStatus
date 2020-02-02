@@ -1,42 +1,48 @@
 {
   "Common":{
-      "Network": "No Internet Connection",
-      "On":"On",
-      "Off":"Off"
+      "Network": "Sem conexão à Internet",
+      "On":"Ligado",
+      "Off":"Desligar",
+      "Yes":"Sim",
+      "Cancel":"Cancelar",
+      "ConfirmClear":"Limpar",
+      "ConfirmClearMessage":"Cache claro",
+      "CurrentVersion":"Versão",
+      "BuyBeer":"Pague-me uma cerveja"
   },
 
   "Service":{
       "Title":"Live Status",
       "Overall":"Xbox Live Status",
-      "Core":"Core Services",
-      "Games":"Games",
-      "Apps":"Apps",
-      "Notify":"Notifications"
+      "Core":"Serviços principais",
+      "Games":"Jogos",
+      "Apps":"Aplicações",
+      "Notify":"Notificações"
   },
 
   "Status":{
-      "Ok":"Up and Running",
-      "Alert":"Service Alert"
+      "Ok":"Subir e Correr",
+      "Alert":"Alerta de serviço"
   },
 
   "Notify":{
-      "Subscribe":"Notify me when this service or app is up and running",
-      "Thanks":"Thank you. We will notify you when service or app is up and running."
+      "Subscribe":"Notifique-me Quando este serviço ou aplicativo estiver EM funcionamento",
+      "Thanks":"Obrigado. Iremos notificá-lo Quando o serviço ou aplicativo estiver EM funcionamento."
   },
 
   "Settings":{
-      "Title":"Settings",
-      "FontSizeTitle":"Font Size",
-      "LanguageTitle":"Language",
-      "NotifyTitle":"Service Up Notification",
+      "Title":"Configurações",
+      "FontSizeTitle":"Tamanho Da Fonte",
+      "LanguageTitle":"Língua",
+      "NotifyTitle":"Notificações",
       "CacheTitle":"Cache",
-      "AboutTitle":"About"
+      "AboutTitle":"Sobre"
   },
 
   "Menu":{
-      "Refresh":"Refresh",
-      "Settings":"Settings",
-      "Search":"Search",
-      "Like":"Like"
+      "Refresh":"Actualizar",
+      "Settings":"Configurações",
+      "Search":"Pesquisar",
+      "Like":"Tipo"
   }
 }

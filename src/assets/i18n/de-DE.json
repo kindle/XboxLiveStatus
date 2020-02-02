@@ -2,7 +2,13 @@
   "Common":{
       "Network": "Keine Internetverbindung",
       "On":"Ein",
-      "Off":"Ausschalten"
+      "Off":"Ausschalten",
+      "Yes":"Ja",
+      "Cancel":"Abbrechen",
+      "ConfirmClear":"Klar",
+      "ConfirmClearMessage":"Löschen des Caches",
+      "CurrentVersion":"Version",
+      "BuyBeer":"Kaufen Sie mir ein Bier"
   },
 
   "Service":{

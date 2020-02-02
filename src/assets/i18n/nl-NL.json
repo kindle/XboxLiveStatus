@@ -1,42 +1,48 @@
 {
   "Common":{
-      "Network": "No Internet Connection",
-      "On":"On",
-      "Off":"Off"
+      "Network": "Servicewaarschuwing",
+      "On":"Inschakelen",
+      "Off":"Uitschakelen",
+      "Yes":"Ja",
+      "Cancel":"Annuleren",
+      "ConfirmClear":"Duidelijk",
+      "ConfirmClearMessage":"Cache wissen",
+      "CurrentVersion":"Versie",
+      "BuyBeer":"Koop een biertje voor me"
   },
 
   "Service":{
       "Title":"Live Status",
       "Overall":"Xbox Live Status",
-      "Core":"Core Services",
-      "Games":"Games",
+      "Core":"Kerndiensten",
+      "Games":"Spel",
       "Apps":"Apps",
-      "Notify":"Notifications"
+      "Notify":"Kennisgevingen"
   },
 
   "Status":{
-      "Ok":"Up and Running",
-      "Alert":"Service Alert"
+      "Ok":"Actief en werkend",
+      "Alert":"Servicewaarschuwing"
   },
 
   "Notify":{
-      "Subscribe":"Notify me when this service or app is up and running",
-      "Thanks":"Thank you. We will notify you when service or app is up and running."
+      "Subscribe":"Laat het me weten wanneer deze service of app het weer doet",
+      "Thanks":"Bedankt. We nemen contact met je op wanneer de service of app actief en werkend is."
   },
 
   "Settings":{
-      "Title":"Settings",
-      "FontSizeTitle":"Font Size",
-      "LanguageTitle":"Language",
-      "NotifyTitle":"Service Up Notification",
+      "Title":"Instellingen",
+      "FontSizeTitle":"Grootte lettertypen",
+      "LanguageTitle":"Taal",
+      "NotifyTitle":"Kennisgevingen",
       "CacheTitle":"Cache",
-      "AboutTitle":"About"
+      "AboutTitle":"Over"
   },
 
   "Menu":{
-      "Refresh":"Refresh",
-      "Settings":"Settings",
-      "Search":"Search",
-      "Like":"Like"
+      "Refresh":"Verfrissen",
+      "Settings":"Instellingen",
+      "Search":"Zoeken",
+      "Like":"Zoals"
   }
 }

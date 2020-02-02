@@ -1,42 +1,48 @@
 {
   "Common":{
-      "Network": "No Internet Connection",
-      "On":"On",
-      "Off":"Off"
+      "Network": "Нет подключения",
+      "On":"Oткрыть",
+      "Off":"Cойти",
+      "Yes":"Да",
+      "Cancel":"Отмена",
+      "ConfirmClear":"Ясно",
+      "ConfirmClearMessage":"Очистить кэш",
+      "CurrentVersion":"Версия",
+      "BuyBeer":"Купи мне пива"
   },
 
   "Service":{
       "Title":"Live Status",
-      "Overall":"Xbox Live Status",
-      "Core":"Core Services",
-      "Games":"Games",
-      "Apps":"Apps",
-      "Notify":"Notifications"
+      "Overall":"Cостояние Xbox Live",
+      "Core":"Основные услуги",
+      "Games":"Игры",
+      "Apps":"Приложения",
+      "Notify":"Уведомления"
   },
 
   "Status":{
-      "Ok":"Up and Running",
-      "Alert":"Service Alert"
+      "Ok":"запуск и запуск",
+      "Alert":"сервисная тревога"
   },
 
   "Notify":{
-      "Subscribe":"Notify me when this service or app is up and running",
-      "Thanks":"Thank you. We will notify you when service or app is up and running."
+      "Subscribe":"служба или приложение при запуске",
+      "Thanks":"Спасибо вам. когда служба или Приложение запускается и запущено, мы сообщим вам."
   },
 
   "Settings":{
-      "Title":"Settings",
-      "FontSizeTitle":"Font Size",
-      "LanguageTitle":"Language",
-      "NotifyTitle":"Service Up Notification",
-      "CacheTitle":"Cache",
-      "AboutTitle":"About"
+      "Title":"Настройки",
+      "FontSizeTitle":"Размер шрифта",
+      "LanguageTitle":"Язык",
+      "NotifyTitle":"Уведомления",
+      "CacheTitle":"Кэша",
+      "AboutTitle":"О"
   },
 
   "Menu":{
-      "Refresh":"Refresh",
-      "Settings":"Settings",
-      "Search":"Search",
-      "Like":"Like"
+      "Refresh":"Обновить",
+      "Settings":"Настройки",
+      "Search":"Поиск",
+      "Like":"Как"
   }
 }

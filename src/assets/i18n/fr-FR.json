@@ -2,7 +2,13 @@
   "Common":{
       "Network": "Pas de connexion Internet",
       "On":"Activer",
-      "Off":"Información"
+      "Off":"Información",
+      "Yes":"Oui",
+      "Cancel":"Annuler",
+      "ConfirmClear":"Clair",
+      "ConfirmClearMessage":"Cache claire",
+      "CurrentVersion":"Version",
+      "BuyBeer":"Achète-moi une bière"
   },
 
   "Service":{

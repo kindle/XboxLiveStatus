@@ -74,18 +74,18 @@ export class Tab2Page implements OnInit {
   
     async clearCache(){
         const alert = await this.alertController.create({
-            header: "Clear",
-            message: "Clear Cache",
+            header: this.translate.instant("Common.ConfirmClear"),
+            message: this.translate.instant("Common.ConfirmClearMessage"),
             buttons: [
             {
-                text: "Canel",
+                text: this.translate.instant("Common.Cancel"),
                 role: 'cancel',
                 cssClass: 'secondary',
                 handler: (blah) => {
                   
                 }
             }, {
-                text: "Yes",
+                text: this.translate.instant("Common.Yes"),
                 handler: () => {
                     this.data.clearCache();
                 }

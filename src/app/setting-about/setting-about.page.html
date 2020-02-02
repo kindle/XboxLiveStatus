@@ -1,25 +1,25 @@
 <ion-item color="light" lines="none">
-    <ion-label>About</ion-label>
+    <ion-label>{{ 'Settings.AboutTitle' | translate }}</ion-label>
     <ion-icon slot="end" name="close" (click)="close()" color="dark"></ion-icon>
 </ion-item>
 <ion-content padding style="background-color: white;">
     <div class="logoArea" text-center>
         <img class="logo" src="assets/icon/drawable-xxxhdpi-icon.png">
         <p class="title">LiveStatus</p>
-        <p class="version">{{ 'About.CurrentVersion' | translate }} {{version}}</p>
+        <p class="version">{{ 'Common.CurrentVersion' | translate }} {{version}}</p>
     </div>
-
+<!--
     <ion-item class="borderItem" (click)="buymebeer()">
         <ion-icon class="menuIcon" slot="start" name="beer" color="dark" size="medium"></ion-icon>
-        <ion-label>{{ 'About.BuyBeer' | translate }}</ion-label>
+        <ion-label>{{ 'Common.BuyBeer' | translate }}</ion-label>
         <ion-icon name="ios-arrow-forward" slot="end" size="small"></ion-icon>
     </ion-item>
     <ion-item lines="none" class="borderBottom" (click)="data.like()">
         <ion-icon class="menuIcon" slot="start" name="heart" color="dark" size="medium"></ion-icon>
-        <ion-label>{{ 'Menu.Header.Feedback' | translate }}</ion-label>
+        <ion-label>{{ 'Menu.Like' | translate }}</ion-label>
         <ion-icon name="ios-arrow-forward" slot="end" size="small"></ion-icon>
     </ion-item>
-
+-->
 <!--
     <ion-item lines="none" class="borderBottom borderItem" (click)="upgrade()">
         <ion-label>{{ 'About.CheckUpgrade' | translate }}</ion-label>
@@ -29,7 +29,7 @@
 
     <div class="conductArea" text-center>
         <p class="copyright">
-            Reddah.com<br>
+            livestatus.reddah.com<br>
         </p>
     </div>
 </ion-content>

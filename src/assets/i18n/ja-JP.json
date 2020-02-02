@@ -1,42 +1,48 @@
 {
   "Common":{
-      "Network": "No Internet Connection",
-      "On":"On",
-      "Off":"Off"
+      "Network": "いいえ、インターネット接続",
+      "On":"オン",
+      "Off":"オフ",
+      "Yes":"はい",
+      "Cancel":"キャンセル",
+      "ConfirmClear":"クリア",
+      "ConfirmClearMessage":"キャッシュのクリア",
+      "CurrentVersion":"バージョン",
+      "BuyBeer":"ビールを買って"
   },
 
   "Service":{
       "Title":"Live Status",
       "Overall":"Xbox Live Status",
-      "Core":"Core Services",
-      "Games":"Games",
-      "Apps":"Apps",
-      "Notify":"Notifications"
+      "Core":"の主なサービス",
+      "Games":"ゲーム",
+      "Apps":"アプリ",
+      "Notify":"通知"
   },
 
   "Status":{
-      "Ok":"Up and Running",
-      "Alert":"Service Alert"
+      "Ok":"正常に動作",
+      "Alert":"一時的にサービス停止"
   },
 
   "Notify":{
-      "Subscribe":"Notify me when this service or app is up and running",
-      "Thanks":"Thank you. We will notify you when service or app is up and running."
+      "Subscribe":"サービスやアプリが復帰したら通知を受ける",
+      "Thanks":"ご利用いただきありがとうございます。サービスまたはアプリが復帰したら、連絡いたします。"
   },
 
   "Settings":{
-      "Title":"Settings",
-      "FontSizeTitle":"Font Size",
-      "LanguageTitle":"Language",
-      "NotifyTitle":"Service Up Notification",
-      "CacheTitle":"Cache",
-      "AboutTitle":"About"
+      "Title":"設定",
+      "FontSizeTitle":"フォントサイズ",
+      "LanguageTitle":"言語",
+      "NotifyTitle":"通知",
+      "CacheTitle":"キャッシュ",
+      "AboutTitle":"アバウト"
   },
 
   "Menu":{
-      "Refresh":"Refresh",
-      "Settings":"Settings",
-      "Search":"Search",
+      "Refresh":"更新",
+      "Settings":"設定",
+      "Search":"検索",
       "Like":"Like"
   }
 }

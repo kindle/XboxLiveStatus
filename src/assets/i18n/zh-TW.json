@@ -2,7 +2,13 @@
   "Common":{
       "Network": "沒有互聯網連接",
       "On":"開啟",
-      "Off":"關閉"
+      "Off":"關閉",
+      "Yes":"確定",
+      "Cancel":"取消",
+      "ConfirmClear":"清除",
+      "ConfirmClearMessage":"清除緩存",
+      "CurrentVersion":"版本號",
+      "BuyBeer":"請作者喝咖啡"
   },
 
   "Service":{

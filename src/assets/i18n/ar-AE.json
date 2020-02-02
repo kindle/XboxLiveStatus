@@ -2,7 +2,13 @@
   "Common":{
       "Network": "No Internet Connection",
       "On":"On",
-      "Off":"Off"
+      "Off":"Off",
+      "Yes":"Yes",
+      "Cancel":"Cancel",
+      "ConfirmClear":"Clear",
+      "ConfirmClearMessage":"Clear Cache",
+      "CurrentVersion":"Version",
+      "BuyBeer":"Buy me a beer"
   },
 
   "Service":{
@@ -28,7 +34,7 @@
       "Title":"Settings",
       "FontSizeTitle":"Font Size",
       "LanguageTitle":"Language",
-      "NotifyTitle":"Service Up Notification",
+      "NotifyTitle":"Notification",
       "CacheTitle":"Cache",
       "AboutTitle":"About"
   },
