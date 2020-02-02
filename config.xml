@@ -20,10 +20,10 @@
     <preference name="SplashScreen" value="none" />
     <preference name="ShowSplashScreenSpinner" value="false" />
     <preference name="SplashScreenDelay" value="0" />
-    <preference name="WindowsStoreIdentityName" value="27997Bailin.Reddah" />
-    <preference name="WindowsStoreFamilyName" value="27997Bailin.Reddah_a910akvnn34f2" />
+    <preference name="WindowsStoreIdentityName" value="27997Bailin.LiveStatus" />
+    <preference name="WindowsStoreFamilyName" value="27997Bailin.LiveStatus_a910akvnn34f2" />
     <preference name="WindowsStorePublisherName" value="Bailin" />
-    <preference name="WindowsStoreDisplayName" value="Reddah" />
+    <preference name="WindowsStoreDisplayName" value="Live Status" />
     <preference name="windows-target-version" value="10.0" />
     <preference name="windows-phone-target-version" value="10.0" />
     <platform name="android">
@@ -95,4 +95,5 @@
     <plugin name="cordova-plugin-network-information" spec="2.0.2" />
     <engine name="android" spec="^7.1.4" />
     <engine name="ios" spec="4.5.5" />
+    <engine name="windows" spec="^6.0.1" />
 </widget>
