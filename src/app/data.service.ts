@@ -230,7 +230,7 @@ export class DataService {
                         text: "Up and Running",
                         data: { secret: 'secret' },
                         foreground: true,
-                        icon: "/assets/icon/active_icon3.png"
+                        icon: "assets/icon/active_icon3.png"
                     });
                 }
 

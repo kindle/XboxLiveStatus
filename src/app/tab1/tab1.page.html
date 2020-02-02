@@ -12,9 +12,9 @@
                     </ion-list-header>
                     <ion-item lines="none" style="--background: transparent">
                         <ion-avatar slot="start" class="avatar-top incident-icon-container">
-                            <img src="/assets/icon/UpAndRunning_icon.png" *ngIf="data.overall['Id']==1"
+                            <img src="assets/icon/UpAndRunning_icon.png" *ngIf="data.overall['Id']==1"
                             class="incident-icon">
-                            <img src="/assets/icon/ServiceAlert_icon.png" *ngIf="data.overall['Id']==2"
+                            <img src="assets/icon/ServiceAlert_icon.png" *ngIf="data.overall['Id']==2"
                             class="incident-icon">
                         </ion-avatar>
                         <div slot="start" class="service-title">
@@ -33,7 +33,7 @@
                     <ion-item lines="none" style="--background: transparent" 
                         *ngFor="let notice of data.noticeArray">
                         <ion-avatar slot="start" class="avatar-top incident-icon-container">
-                            <img src="/assets/icon/UpAndRunning_icon.png" class="incident-icon">
+                            <img src="assets/icon/UpAndRunning_icon.png" class="incident-icon">
                         </ion-avatar>
                         <div slot="start" class="service-title">
                             <h5>

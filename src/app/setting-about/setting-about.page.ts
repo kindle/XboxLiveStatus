@@ -102,7 +102,7 @@ export class SettingAboutPage implements OnInit {
         const alert = await this.alertController.create({
             header: this.translate.instant("Menu.PressPay"),
             cssClass: 'pay-code',
-            message: "<img src='/assets/icon/AlipayCode.jpeg'>",
+            message: "<img src='assets/icon/AlipayCode.jpeg'>",
         });
     
         await alert.present();
@@ -112,7 +112,7 @@ export class SettingAboutPage implements OnInit {
         const alert = await this.alertController.create({
             header: this.translate.instant("Menu.PressPay"),
             cssClass: 'pay-code',
-            message: "<img src='/assets/icon/WechatZan.jpeg'>",
+            message: "<img src='assets/icon/WechatZan.jpeg'>",
         });
     
         await alert.present();

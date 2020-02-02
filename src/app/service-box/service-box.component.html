@@ -4,9 +4,9 @@
     </ion-list-header>
     <ion-item lines="none" *ngFor="let service of services" style="--background: transparent">
         <ion-avatar slot="start" class="avatar-top incident-icon-container">
-            <img src="/assets/icon/UpAndRunning_icon.png" *ngIf="service['Status']['Id']==1"
+            <img src="assets/icon/UpAndRunning_icon.png" *ngIf="service['Status']['Id']==1"
                 class="incident-icon">
-            <img src="/assets/icon/ServiceAlert_icon.png" *ngIf="service['Status']['Id']==2"
+            <img src="assets/icon/ServiceAlert_icon.png" *ngIf="service['Status']['Id']==2"
                 class="incident-icon">
         </ion-avatar>
         <div slot="start" class="service-title">
