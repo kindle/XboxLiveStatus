@@ -200,6 +200,7 @@ export class DataService {
     checkSubUpdate(data){
         this.subArray = this.subArray.filter(s=>s.Notified!=true);
         let newIdSet = new Set();
+        /* flatMap not supported in IE
         data["CoreServices"].flatMap(s=>s.Scenarios).forEach((scenario)=>{
             scenario.Incidents.forEach((incident)=>{
                 newIdSet.add(`LiveStatus_${scenario['Id']}_${incident['Id']}`)
@@ -215,7 +216,24 @@ export class DataService {
             scenario.Incidents.forEach((incident)=>{
                 newIdSet.add(`LiveStatus_${scenario['Id']}_${incident['Id']}`)
             })
+        });*/
+        data["CoreServices"].reduce((acc, val) => acc.concat(val.Scenarios), []).forEach((scenario)=>{
+            scenario.Incidents.forEach((incident)=>{
+                newIdSet.add(`LiveStatus_${scenario['Id']}_${incident['Id']}`)
+            })
         });
+        
+        data["Games"].reduce((acc, val) => acc.concat(val.Scenarios), []).forEach((scenario)=>{
+            scenario.Incidents.forEach((incident)=>{
+                newIdSet.add(`LiveStatus_${scenario['Id']}_${incident['Id']}`)
+            })
+        });
+        data["Apps"].reduce((acc, val) => acc.concat(val.Scenarios), []).forEach((scenario)=>{
+            scenario.Incidents.forEach((incident)=>{
+                newIdSet.add(`LiveStatus_${scenario['Id']}_${incident['Id']}`)
+            })
+        });
+       
 
         this.subArray.forEach((subArrayItem)=>{
             if(!newIdSet.has(subArrayItem.Id)){
