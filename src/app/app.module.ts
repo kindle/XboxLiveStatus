@@ -20,16 +20,19 @@ import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 import { SettingAboutPage } from './setting-about/setting-about.page';
 import { Globalization } from '@ionic-native/globalization/ngx';
 import { AppRate } from '@ionic-native/app-rate/ngx';
+import { Tab2Page } from './tab2/tab2.page';
 
 @NgModule({
     declarations: [
         AppComponent,
         LocalePage,
         SettingAboutPage,
+        Tab2Page,
     ],
     entryComponents: [
         LocalePage,
         SettingAboutPage,
+        Tab2Page,
     ],
     imports: [
         BrowserModule, 

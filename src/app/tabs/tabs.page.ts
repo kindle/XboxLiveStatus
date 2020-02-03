@@ -3,6 +3,7 @@ import { Platform, ModalController, ActionSheetController, AlertController, Load
 import { LocalStorageService } from 'ngx-webstorage';
 import { TranslateService } from '@ngx-translate/core';
 import { DataService } from '../data.service';
+import { Tab2Page } from '../tab2/tab2.page';
 
 @Component({
     selector: 'app-tabs',
@@ -15,6 +16,7 @@ export class TabsPage {
         public data : DataService,
         private translate: TranslateService,
         public loadingController: LoadingController,
+        private modalController: ModalController,
     ) {
         let locale = this.data.getCurrentLocale();
         this.translate.setDefaultLang(locale);
@@ -28,6 +30,16 @@ export class TabsPage {
     refresh(){
         this.data.reloadLocaleSettings();
         this.data.forceRefreshStatus();
+    }
+
+    async goSettings(){
+        this.data.reloadLocaleSettings()
+        const modal = await this.modalController.create({
+            component: Tab2Page,
+            componentProps: {}
+        });
+        
+        await modal.present();
     }
 
 
