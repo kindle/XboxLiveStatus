@@ -16,7 +16,7 @@ const routes: Routes = [
           }
         ]
       },
-      {
+      /*{
         path: 'tab2',
         children: [
           {
@@ -24,7 +24,7 @@ const routes: Routes = [
             loadChildren: '../tab2/tab2.module#Tab2PageModule'
           }
         ]
-      },
+      },*/
       {
         path: 'tab3',
         children: [

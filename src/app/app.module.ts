@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
@@ -20,19 +20,20 @@ import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 import { SettingAboutPage } from './setting-about/setting-about.page';
 import { Globalization } from '@ionic-native/globalization/ngx';
 import { AppRate } from '@ionic-native/app-rate/ngx';
-import { Tab2Page } from './tab2/tab2.page';
+import { SettingsPage } from './settings/settings.page';
 
 @NgModule({
+    schemas: [CUSTOM_ELEMENTS_SCHEMA],
     declarations: [
         AppComponent,
         LocalePage,
         SettingAboutPage,
-        Tab2Page,
+        SettingsPage,
     ],
     entryComponents: [
         LocalePage,
         SettingAboutPage,
-        Tab2Page,
+        SettingsPage,
     ],
     imports: [
         BrowserModule, 

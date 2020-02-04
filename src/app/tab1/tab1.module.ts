@@ -16,6 +16,13 @@ import { HttpLoaderFactory } from '../app.module';
         FormsModule,
         RouterModule.forChild([{ path: '', component: Tab1Page }]),
         TranslateModule.forChild(),
+        /*TranslateModule.forRoot({
+            loader: {
+                provide: TranslateLoader,
+                useFactory: HttpLoaderFactory,
+                deps: [HttpClient]
+            }
+        }),*/
     ],
     declarations: [
         Tab1Page,

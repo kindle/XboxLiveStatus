@@ -26,6 +26,7 @@ export class ServiceBoxComponent implements OnInit {
     }
 
     async ngOnInit() {
+        
     }
 
     async message(scenario, incident){

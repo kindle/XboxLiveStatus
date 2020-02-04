@@ -1,5 +1,5 @@
 <ion-item style="--background:transparent;" lines="none" color="light">
-    <ion-label *ngIf="data.getCurrentLocale()!='en-US'">语言(Language)</ion-label>
+    <ion-label *ngIf="data.getCurrentLocale()!='en-US'">{{ 'Settings.LanguageTitle' | translate }}</ion-label>
     <ion-label *ngIf="data.getCurrentLocale()=='en-US'">Language</ion-label>
     <ion-icon slot="end" name="close" (click)="close()" color="dark"></ion-icon>
 </ion-item>

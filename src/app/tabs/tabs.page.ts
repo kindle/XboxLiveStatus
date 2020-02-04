@@ -1,9 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, NgZone } from '@angular/core';
 import { Platform, ModalController, ActionSheetController, AlertController, LoadingController } from '@ionic/angular';
-import { LocalStorageService } from 'ngx-webstorage';
 import { TranslateService } from '@ngx-translate/core';
 import { DataService } from '../data.service';
-import { Tab2Page } from '../tab2/tab2.page';
+import { SettingsPage } from '../settings/settings.page';
 
 @Component({
     selector: 'app-tabs',
@@ -17,6 +16,7 @@ export class TabsPage {
         private translate: TranslateService,
         public loadingController: LoadingController,
         private modalController: ModalController,
+        private zone: NgZone,
     ) {
         let locale = this.data.getCurrentLocale();
         this.translate.setDefaultLang(locale);
@@ -35,11 +35,15 @@ export class TabsPage {
     async goSettings(){
         this.data.reloadLocaleSettings()
         const modal = await this.modalController.create({
-            component: Tab2Page,
+            component: SettingsPage,
             componentProps: {}
         });
         
         await modal.present();
+        const { data } = await modal.onDidDismiss();
+        if(data||!data){
+            this.data.forceRefreshStatus();
+        }
     }
 
 
