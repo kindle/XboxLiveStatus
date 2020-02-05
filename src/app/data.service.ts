@@ -49,9 +49,9 @@ export class DataService {
     }
 
     subArray;
-    //noticeArray;
+    noticeArray;
     
-    noticeArray = [{
+    /*noticeArray = [{
         Id:1, 
         Name: 'Destiny 2',
         Time: this.utcToLocal('2020-01-28 17:00:24'),
@@ -71,7 +71,7 @@ export class DataService {
         Time: this.utcToLocal('2020-01-28 17:00:24'),
         Message: 'test',
         Devices: 'test'
-    }];
+    }];*/
     
 
     showTabText = false;
@@ -131,7 +131,7 @@ export class DataService {
         this.initCache("LiveStatus_Settings_ShowNotify", this.settings.showNotify, true);
         this.initCache("LiveStatus_Settings_Locale", this.settings.locale, 'en-US');
         this.initCache("LiveStatus_SubArray", this.subArray, []);
-        //this.initCache("LiveStatus_NoticeArray", this.noticeArray, []);
+        this.initCache("LiveStatus_NoticeArray", this.noticeArray, []);
         
 
         let cachedOverall = this.localStorageService.retrieve("LiveStatus_Overall");
