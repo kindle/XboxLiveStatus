@@ -61,7 +61,11 @@ ion-slides {
     margin-top: 8px;
 }
 
-
+.scroll-servic-box{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
 
 
 app-service-box{

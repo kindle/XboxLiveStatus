@@ -71,8 +71,8 @@ export class DataService {
         Time: this.utcToLocal('2020-01-28 17:00:24'),
         Message: 'test',
         Devices: 'test'
-    }];*/
-    
+    }];
+    */
 
     showTabText = false;
     hideTabText(){
@@ -84,12 +84,9 @@ export class DataService {
         private localStorageService: LocalStorageService,
         private loadingController: LoadingController,
         private notification: LocalNotifications,
-        private popoverController: PopoverController,
         private alertController: AlertController,
         private appVersion: AppVersion,
         private appRate: AppRate,
-        private platform: Platform,
-        private translate: TranslateService,
     ) {}
 
     overall = {
@@ -144,16 +141,14 @@ export class DataService {
             this.coreServices = cachedCore;
             this.gameServices = cachedGames;
             this.appServices = cachedApps;
-            loading.dismiss();
         }
-        else
+
+        this.getData().subscribe(data => 
         {
-            this.getData().subscribe(data => 
-            {
-                this.updateStatus(data);
-                loading.dismiss();
-            });
-        }
+            this.updateStatus(data);
+            loading.dismiss();
+        });
+        
     }
 
     async forceRefreshStatus(){
@@ -398,9 +393,9 @@ export class DataService {
     }
 
     reloadLocaleSettings(){
-        let currentLocale = this.getCurrentLocale();
-        this.translate.setDefaultLang(currentLocale);
-        this.translate.use(currentLocale);
+        //let currentLocale = this.getCurrentLocale();
+        //this.translate.setDefaultLang(currentLocale);
+        //this.translate.use(currentLocale);
     }
 
 
