@@ -67,7 +67,7 @@ export class AppComponent {
             //this.translate.setDefaultLang(currentLocale);
             //this.translate.use(currentLocale);
 
-            this.data.loadTranslate(defaultLocale);
+            this.data.loadTranslate(currentLocale);
             this.data.setCurrentLocale(currentLocale);
         }
         

@@ -70,7 +70,7 @@ export class SettingAboutPage implements OnInit {
         }
 
         const actionSheet = await this.actionSheetController.create({
-            //header: this.translate.instant("Common.BuyBeer"),
+            //header: this.data.instant("Common.BuyBeer"),
             buttons: [
             /*{
               text: 'Alipay',
@@ -100,7 +100,7 @@ export class SettingAboutPage implements OnInit {
 
     async alipayQrCode() {
         const alert = await this.alertController.create({
-            header: this.translate.instant("Menu.PressPay"),
+            header: this.data.instant("Menu.PressPay"),
             cssClass: 'pay-code',
             message: "<img src='assets/icon/AlipayCode.jpeg'>",
         });
@@ -110,7 +110,7 @@ export class SettingAboutPage implements OnInit {
 
     async wechatpayQrCode() {
         const alert = await this.alertController.create({
-            header: this.translate.instant("Menu.PressPay"),
+            header: this.data.instant("Menu.PressPay"),
             cssClass: 'pay-code',
             message: "<img src='assets/icon/WechatZan.jpeg'>",
         });

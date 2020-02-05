@@ -33,7 +33,7 @@
               <ion-label color="light">{{ data.instant('Settings.NotifyTitle') }}</ion-label>
           </ion-list-header>
           <ion-item lines="none" style="--background:transparent;">
-              <ion-label color="light">{{(data.settings.showNotify?'Common.On':'Common.Off') | translate}}</ion-label>
+              <ion-label color="light">{{ data.instant(data.settings.showNotify?'Common.On':'Common.Off')}}</ion-label>
               <ion-toggle [(ngModel)]="data.settings.showNotify" color="success" slot="end" (ionChange)="changeNotify()"></ion-toggle>
           </ion-item>
         </ion-list>

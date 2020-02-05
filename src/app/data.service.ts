@@ -255,7 +255,7 @@ export class DataService {
         });
     }
 
-    //this.translate.instant("Confirm.Title")
+    //this.data.instant("Confirm.Title")
     async confirmDelete(notice){
         const alert = await this.alertController.create({
             header: "Delete",
@@ -334,7 +334,7 @@ export class DataService {
         new Locale("de-DE", "Deutsch (de-DE)"),
         new Locale("fr-FR", "Français (fr-FR)"),
         new Locale("ar-AE", " عربي ، (ar-AE)"),
-        new Locale("el-GR", "Ελληνικά (el-GR)"),
+        //new Locale("el-GR", "Ελληνικά (el-GR)"),
         new Locale("es-ES", "Español (es-ES)"),
         new Locale("it-IT", "Italiano (it-IT)"),
         new Locale("ja-JP", "日本語 (ja-JP)"),
@@ -342,7 +342,7 @@ export class DataService {
         new Locale("nl-NL", "Nederlands (nl-NL)"),
         new Locale("pt-PT", "Português (pt-PT)"),
         new Locale("ru-RU", "Pусский язык (ru-RU)"),
-        new Locale("th-TH", "ภาษาไทย (th-TH)"),
+        //new Locale("th-TH", "ภาษาไทย (th-TH)"),
         new Locale("zh-CN", "简体中文 (zh-CN)"),
         new Locale("zh-TW", "繁體中文 (zh-TW)"),
     ];
