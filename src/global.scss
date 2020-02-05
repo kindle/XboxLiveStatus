@@ -42,11 +42,11 @@ ion-loading.custom-loading {
 
 .avatar-top {
     margin: 10px 0px 0px 0px;
-    margin-bottom: auto;
+    margin-bottom: auto !important;
 }
 
 .scroll-list{
-    overflow-y: scroll;
+    overflow-y: scroll !important;
 }
 
 

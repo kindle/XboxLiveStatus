@@ -1,14 +1,14 @@
 
 <div class="parallax-bg" style="background-image:url(assets/icon/PanoramaBackground.png)"></div>
 <ion-item style="--background:transparent;" lines="none">
-    <h1 style="color:white;">{{ 'Settings.Title' | translate }}</h1>
+    <h1 style="color:white;">{{ data.instant('Settings.Title') }}</h1>
     <ion-icon slot="end" name="close" (click)="close()" color="light"></ion-icon>
 </ion-item>
 <ion-content color="transparent" (click)="data.hideTabText()">
     <ion-list style="width: 100%;background-color:transparent;margin-bottom:auto;">
         <ion-list style="background-color:transparent;">
           <ion-list-header>
-              <ion-label color="light">{{ 'Settings.FontSizeTitle' | translate }}</ion-label>
+              <ion-label color="light">{{ data.instant('Settings.FontSizeTitle') }}</ion-label>
           </ion-list-header>
           <ion-item lines="none" style="--background:transparent;">
               <ion-range no-padding min="1" max="10" step="1" [(ngModel)]="data.settings.fontSize" snaps="true" tick="true"
@@ -20,7 +20,7 @@
         </ion-list>
         <ion-list style="background-color:transparent;" (click)="changeLocale()">
           <ion-list-header>
-              <ion-label color="light">{{ 'Settings.LanguageTitle' | translate }}</ion-label>
+              <ion-label color="light">{{ data.instant('Settings.LanguageTitle') }}</ion-label>
           </ion-list-header>
           <ion-item lines="none" style="--background:transparent;">
               <ion-icon slot="start" name="globe" color="light" size="large"></ion-icon>
@@ -30,7 +30,7 @@
         </ion-list>
         <ion-list style="background-color:transparent;">
           <ion-list-header>
-              <ion-label color="light">{{ 'Settings.NotifyTitle' | translate }}</ion-label>
+              <ion-label color="light">{{ data.instant('Settings.NotifyTitle') }}</ion-label>
           </ion-list-header>
           <ion-item lines="none" style="--background:transparent;">
               <ion-label color="light">{{(data.settings.showNotify?'Common.On':'Common.Off') | translate}}</ion-label>
@@ -40,14 +40,14 @@
         <ion-list style="background-color:transparent;" (click)="clearCache()">
           <ion-item lines="none" style="--background:transparent;">
               <ion-icon slot="start" name="trash" color="light" size="large"></ion-icon>
-              <ion-label color="light">{{ 'Settings.CacheTitle' | translate }}</ion-label>
+              <ion-label color="light">{{ data.instant('Settings.CacheTitle') }}</ion-label>
               <ion-icon name="ios-arrow-forward" color="light" slot="end" size="small"></ion-icon>
           </ion-item>
         </ion-list>
         <ion-list style="background-color:transparent;" (click)="about()">
           <ion-item lines="none" style="--background:transparent;">
               <ion-icon class="menuIcon" slot="start" name="information-circle-outline" color="light" size="large"></ion-icon>
-              <ion-label color="light">{{ 'Settings.AboutTitle' | translate }}</ion-label>
+              <ion-label color="light">{{ data.instant('Settings.AboutTitle') }}</ion-label>
               <ion-icon name="ios-arrow-forward" color="light" slot="end" size="small"></ion-icon>
           </ion-item>
         </ion-list>

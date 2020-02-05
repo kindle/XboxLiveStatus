@@ -25,7 +25,9 @@ export class LocalePage implements OnInit {
     
     async changeLocale(selector: string) {
         this.data.setCurrentLocale(selector)
-        this.translate.use(selector);
+        this.data.loadTranslate(selector);
+        
+        //this.translate.use(selector);
         this.data.clearCache();
 
         await this.modalController.dismiss(selector!==this.orgLocale);

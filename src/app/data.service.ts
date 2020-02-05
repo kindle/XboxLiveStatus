@@ -15,6 +15,8 @@ import { TranslateService } from '@ngx-translate/core';
     providedIn: 'root'
 })
 export class DataService {
+    plm="not set";
+
     settings = {
         networkConnected: true,
         showNotify: true,
@@ -47,8 +49,8 @@ export class DataService {
     }
 
     subArray;
-    noticeArray;
-    /*
+    //noticeArray;
+    
     noticeArray = [{
         Id:1, 
         Name: 'Destiny 2',
@@ -70,7 +72,7 @@ export class DataService {
         Message: 'test',
         Devices: 'test'
     }];
-    */
+    
 
     showTabText = false;
     hideTabText(){
@@ -129,7 +131,7 @@ export class DataService {
         this.initCache("LiveStatus_Settings_ShowNotify", this.settings.showNotify, true);
         this.initCache("LiveStatus_Settings_Locale", this.settings.locale, 'en-US');
         this.initCache("LiveStatus_SubArray", this.subArray, []);
-        this.initCache("LiveStatus_NoticeArray", this.noticeArray, []);
+        //this.initCache("LiveStatus_NoticeArray", this.noticeArray, []);
         
 
         let cachedOverall = this.localStorageService.retrieve("LiveStatus_Overall");
@@ -403,40 +405,64 @@ export class DataService {
 
 
     like(){
-        this.platform.ready().then(() => {
-            
-            this.appRate.preferences = {
-                useLanguage : 'en',
-                displayAppName: 'Live Status',
-                usesUntilPrompt: 2,
-                promptAgainForEachNewVersion: false,
-                storeAppURL: {
-                    ios: '1481532281',
-                    android: 'market://details?id=com.reddah.app',
-                    windows: 'ms-windows-store://pdp/?ProductId=9nblggh0b2b9',
-                    windows8: 'ms-windows-store:Review?name=9nblggh0b2b9'
-                },
-                customLocale: {
-                    title: 'Do you enjoy %@?',
-                    message: 'If you enjoy using %@, would you mind taking a moment to rate it? Thanks so much!',
-                    cancelButtonLabel: 'No, Thanks',
-                    //laterButtonLabel: 'Remind Me Later',
-                    rateButtonLabel: 'Rate It Now'
-                },
-                callbacks: {
-                onRateDialogShow: function(callback){
-                    console.log('rate dialog shown!');
-                    alert(1)
-                },
-                onButtonClicked: function(buttonIndex){
-                    console.log('Selected index: -> ' + buttonIndex);
-                    alert(2)
-                }
-                }
-            };
+        this.appRate.preferences = {
+            useLanguage : 'en',
+            displayAppName: 'Live Status',
+            usesUntilPrompt: 2,
+            promptAgainForEachNewVersion: false,
+            storeAppURL: {
+                ios: '1481532281',
+                android: 'market://details?id=com.reddah.app',
+                windows: 'ms-windows-store://pdp/?ProductId=9nblggh0b2b9',
+                windows8: 'ms-windows-store:Review?name=9nblggh0b2b9'
+            },
+            customLocale: {
+                title: 'Do you enjoy %@?',
+                message: 'If you enjoy using %@, would you mind taking a moment to rate it? Thanks so much!',
+                cancelButtonLabel: 'No, Thanks',
+                //laterButtonLabel: 'Remind Me Later',
+                rateButtonLabel: 'Rate It Now'
+            },
+            callbacks: {
+            onRateDialogShow: function(callback){
+                console.log('rate dialog shown!');
+                alert(1)
+            },
+            onButtonClicked: function(buttonIndex){
+                console.log('Selected index: -> ' + buttonIndex);
+                alert(2)
+            }
+            }
+        };
 
-            // Opens the rating immediately no matter what preferences you set
-            this.appRate.promptForRating(true);
+        // Opens the rating immediately no matter what preferences you set
+        this.appRate.promptForRating(true);
+        
+    }
+
+    localeData;
+    loadTranslate(locale){
+        this.http.get<any>(`assets/i18n/${locale}.json`)
+        .subscribe(res =>{
+            this.localeData=this.flatten(res);
+        }, error =>{
+            console.log(error);
         });
+    }
+
+    instant(key){
+        return this.localeData[key];
+    }
+
+    flatten (obj, prefix = [], current = {}) {
+        if (typeof (obj) === 'object' && obj !== null) {
+          Object.keys(obj).forEach(key => {
+            this.flatten(obj[key], prefix.concat(key), current)
+          })
+        } else {
+          current[prefix.join('.')] = obj
+        }
+      
+        return current
     }
 }

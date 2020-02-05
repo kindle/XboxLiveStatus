@@ -46,7 +46,8 @@ export class SettingsPage implements OnInit {
         let currentLocale = this.data.getCurrentLocale();
         const changeLocaleModal = await this.modalController.create({
             component: LocalePage,
-            componentProps: { orgLocale: currentLocale }
+            componentProps: { orgLocale: currentLocale },
+            cssClass: 'modal-fullscreen'
         });
         
         await changeLocaleModal.present();
@@ -54,7 +55,9 @@ export class SettingsPage implements OnInit {
         if(data){
             this.zone.run(()=>{
                 let newLocale = this.data.getCurrentLocale();
-                this.translate.setDefaultLang(newLocale);
+                //this.translate.setDefaultLang(newLocale);
+                
+                this.data.loadTranslate(newLocale);
                 
                 this.data.Locales.forEach((value, index, arr)=>{
                     if(newLocale===value.Name)

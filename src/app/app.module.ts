@@ -21,9 +21,10 @@ import { SettingAboutPage } from './setting-about/setting-about.page';
 import { Globalization } from '@ionic-native/globalization/ngx';
 import { AppRate } from '@ionic-native/app-rate/ngx';
 import { SettingsPage } from './settings/settings.page';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
-    schemas: [CUSTOM_ELEMENTS_SCHEMA],
+    //schemas: [CUSTOM_ELEMENTS_SCHEMA],
     declarations: [
         AppComponent,
         LocalePage,
@@ -49,6 +50,7 @@ import { SettingsPage } from './settings/settings.page';
                 deps: [HttpClient]
             }
         }),
+        FormsModule,
     ],
     providers: [
         StatusBar,

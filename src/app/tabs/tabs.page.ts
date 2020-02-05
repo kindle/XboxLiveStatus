@@ -36,7 +36,8 @@ export class TabsPage {
         this.data.reloadLocaleSettings()
         const modal = await this.modalController.create({
             component: SettingsPage,
-            componentProps: {}
+            componentProps: {},
+            cssClass: 'modal-fullscreen'
         });
         
         await modal.present();

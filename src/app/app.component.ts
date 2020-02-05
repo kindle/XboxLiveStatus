@@ -5,8 +5,6 @@ import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 
 import { TranslateService } from '@ngx-translate/core';
-
-import { LocalStorageService } from 'ngx-webstorage';
 import { DataService } from './data.service';
 
 import { Globalization } from '@ionic-native/globalization';
@@ -23,7 +21,6 @@ export class AppComponent {
         private splashScreen: SplashScreen,
         private statusBar: StatusBar,
         private translate: TranslateService,
-        private localStorageService: LocalStorageService,
         private data: DataService,
         private network: Network,
         private zone: NgZone,
@@ -34,59 +31,71 @@ export class AppComponent {
     initLocale(){
         let currentLocale = this.data.getCurrentLocale();
         let defaultLocale ="en-US"
+        
         if(currentLocale==null){
-            if(this.platform.is('cordova'))
+            if(this.platform.is('ios')||this.platform.is('android'))
             { 
                 Globalization.getPreferredLanguage()
                 .then(res => {
                     this.data.setCurrentLocale(res.value);
-                    this.translate.setDefaultLang(res.value);
+                    //this.translate.setDefaultLang(res.value);
+                    this.data.loadTranslate(res.value);
                 })
                 .catch(e => {
                     this.data.setCurrentLocale(defaultLocale);
-                    this.translate.setDefaultLang(defaultLocale);
+                    //this.translate.setDefaultLang(defaultLocale);
+                    this.data.loadTranslate(defaultLocale);
                 });
             }
-            else{                
+            else{    
+                //this.zone.run(()=>{
+                    //this.translate.setDefaultLang(currentLocale);
+                    //this.translate.use(currentLocale);
+                  //  this.data.loadTranslate(defaultLocale);
+                //});        
+                this.data.loadTranslate(defaultLocale);
                 this.data.setCurrentLocale(defaultLocale);
-                this.translate.setDefaultLang(defaultLocale);
-                this.translate.use(defaultLocale);
+                //this.translate.setDefaultLang(defaultLocale);
+                //this.translate.use(defaultLocale);
             }
         }
         else{
-            this.zone.run(()=>{
-                this.translate.setDefaultLang(currentLocale);
-                this.translate.use(currentLocale);
-            })
+            //this.zone.run(()=>{
+            //    this.translate.setDefaultLang(currentLocale);
+            //    this.translate.use(currentLocale);
+            //});
+            //this.translate.setDefaultLang(currentLocale);
+            //this.translate.use(currentLocale);
+
+            this.data.loadTranslate(defaultLocale);
             this.data.setCurrentLocale(currentLocale);
         }
         
     }
 
     initializeApp() {
+        this.data.plm = 'init app';
         this.platform.ready().then(() => {
+            this.data.plm += 'plat form ready';
             this.statusBar.overlaysWebView(false);
             this.statusBar.styleDefault();
             this.splashScreen.hide();
-
-            this.initLocale();
-
-            this.network.onDisconnect().subscribe(() => {
-                this.data.settings.networkConnected = false;
-            });
-            
-            this.network.onConnect().subscribe(() => {
-                this.data.settings.networkConnected = true;
-            });
-
-            let currentFontSize = this.data.getCurrentFontSize();
-            if(!currentFontSize)
-                currentFontSize = 4;
-            this.data.updateUIFontSize(currentFontSize);
-            this.data.settings.fontSize = currentFontSize;
-            this.data.settings.showNotify = this.data.getCurrentShowNotify();
-        
-
         });
+        
+        this.initLocale();
+        this.network.onDisconnect().subscribe(() => {
+            this.data.settings.networkConnected = false;
+        });
+        
+        this.network.onConnect().subscribe(() => {
+            this.data.settings.networkConnected = true;
+        });
+
+        let currentFontSize = this.data.getCurrentFontSize();
+        if(!currentFontSize)
+            currentFontSize = 4;
+        this.data.updateUIFontSize(currentFontSize);
+        this.data.settings.fontSize = currentFontSize;
+        this.data.settings.showNotify = this.data.getCurrentShowNotify();
     }
 }

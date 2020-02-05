@@ -1,25 +1,25 @@
 
 <ion-tabs class="tab-top-m">
     <div class="tab-top-margin" *ngIf="data.showTabText"></div>
-    <ion-tab-bar slot="bottom" style="padding:0 15%;" color="dark">
-        <ion-tab-button tab="tab1" (click)="refresh()">
+    <ion-tab-bar slot="bottom" class="tab-bar-box" color="dark">
+        <ion-tab-button tab="tab1" (click)="refresh()" class="tab-top-m">
             <ion-icon name="sync" class="tab-icon"></ion-icon>
-            <ion-label *ngIf="data.showTabText" class="tab-text">{{ 'Menu.Refresh' | translate }}</ion-label>
+            <ion-label *ngIf="data.showTabText" class="tab-text">{{ data.instant('Menu.Refresh') }}</ion-label>
         </ion-tab-button>
 
-        <ion-tab-button (click)="goSettings()">
+        <ion-tab-button (click)="goSettings()" class="tab-top-m">
             <ion-icon name="settings" class="tab-icon"></ion-icon>
-            <ion-label *ngIf="data.showTabText" class="tab-text">{{ 'Menu.Settings' | translate }}</ion-label>
+            <ion-label *ngIf="data.showTabText" class="tab-text">{{ data.instant('Menu.Settings') }}</ion-label>
         </ion-tab-button>
 <!--
-        <ion-tab-button tab="tab3" (click)="data.reloadLocaleSettings()">
+        <ion-tab-button tab="tab3" (click)="data.reloadLocaleSettings()" class="tab-top-m">
             <ion-icon name="search" class="tab-icon"></ion-icon>
-            <ion-label *ngIf="data.showTabText" class="tab-text">{{ 'Menu.Search' | translate }}</ion-label>
+            <ion-label *ngIf="data.showTabText" class="tab-text">{{ data.instant('Menu.Search') }}</ion-label>
         </ion-tab-button>
 -->
-        <ion-tab-button (click)="data.like()">
+        <ion-tab-button (click)="data.like()" class="tab-top-m">
             <ion-icon name="heart" class="tab-icon"></ion-icon>
-            <ion-label *ngIf="data.showTabText" class="tab-text">{{ 'Menu.Like' | translate }}</ion-label>
+            <ion-label *ngIf="data.showTabText" class="tab-text">{{ data.instant('Menu.Like') }}</ion-label>
         </ion-tab-button>
 
         <div (click)="toggleText()" class="tab-option-button">
