@@ -392,45 +392,36 @@ export class DataService {
         this.noticeArray = [];
     }
 
-    reloadLocaleSettings(){
-        //let currentLocale = this.getCurrentLocale();
-        //this.translate.setDefaultLang(currentLocale);
-        //this.translate.use(currentLocale);
-    }
-
-
     like(){
         this.appRate.preferences = {
-            useLanguage : 'en',
-            displayAppName: 'Live Status',
+            useLanguage : this.settings.locale,
+            displayAppName: this.instant('Service.Title'),
             usesUntilPrompt: 2,
             promptAgainForEachNewVersion: false,
             storeAppURL: {
                 ios: '1481532281',
                 android: 'market://details?id=com.reddah.app',
-                windows: 'ms-windows-store://pdp/?ProductId=9nblggh0b2b9',
+                windows: 'ms-windows-store://pdp/?productid=9NBLGGH0B2B9',
                 windows8: 'ms-windows-store:Review?name=9nblggh0b2b9'
             },
             customLocale: {
-                title: 'Do you enjoy %@?',
-                message: 'If you enjoy using %@, would you mind taking a moment to rate it? Thanks so much!',
-                cancelButtonLabel: 'No, Thanks',
+                //title: 'Do you enjoy %@?',
+                title: this.instant('Menu.Like'),
+                //message: this.instant('Menu.Like'),
+                cancelButtonLabel: this.instant('Common.Cancel'),
                 //laterButtonLabel: 'Remind Me Later',
-                rateButtonLabel: 'Rate It Now'
+                rateButtonLabel: this.instant('Common.Yes')
             },
             callbacks: {
             onRateDialogShow: function(callback){
                 console.log('rate dialog shown!');
-                alert(1)
             },
             onButtonClicked: function(buttonIndex){
                 console.log('Selected index: -> ' + buttonIndex);
-                alert(2)
             }
             }
         };
 
-        // Opens the rating immediately no matter what preferences you set
         this.appRate.promptForRating(true);
         
     }

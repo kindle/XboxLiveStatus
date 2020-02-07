@@ -28,12 +28,10 @@ export class TabsPage {
     }
 
     refresh(){
-        this.data.reloadLocaleSettings();
         this.data.forceRefreshStatus();
     }
 
     async goSettings(){
-        this.data.reloadLocaleSettings()
         const modal = await this.modalController.create({
             component: SettingsPage,
             componentProps: {},
