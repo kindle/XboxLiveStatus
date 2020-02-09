@@ -5,6 +5,8 @@
       "Off":"關閉",
       "Yes":"確定",
       "Cancel":"取消",
+      "Later":"以後再說",
+      "RateMsg":"喜歡%@嗎?",
       "ConfirmClear":"清除",
       "ConfirmClearMessage":"清除緩存",
       "CurrentVersion":"版本號",

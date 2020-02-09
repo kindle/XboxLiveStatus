@@ -9,7 +9,7 @@ import { AppVersion } from '@ionic-native/app-version/ngx';
 import { AppRate } from '@ionic-native/app-rate/ngx';
 import * as moment from 'moment';
 import { Locale } from './models/locale';
-import { TranslateService } from '@ngx-translate/core';
+import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 
 @Injectable({
     providedIn: 'root'
@@ -87,6 +87,8 @@ export class DataService {
         private alertController: AlertController,
         private appVersion: AppVersion,
         private appRate: AppRate,
+        private platform: Platform,
+        private iab: InAppBrowser,
     ) {}
 
     overall = {
@@ -197,39 +199,46 @@ export class DataService {
     checkSubUpdate(data){
         this.subArray = this.subArray.filter(s=>s.Notified!=true);
         let newIdSet = new Set();
-        /* flatMap not supported in IE
-        data["CoreServices"].flatMap(s=>s.Scenarios).forEach((scenario)=>{
-            scenario.Incidents.forEach((incident)=>{
-                newIdSet.add(`LiveStatus_${scenario['Id']}_${incident['Id']}`)
-            })
-        });
+        /*
+        if(this.platform.is('ios')||this.platform.is('android')){
+            // flatMap not supported in IE
+            data["CoreServices"].flatMap(s=>s.Scenarios).forEach((scenario)=>{
+                scenario.Incidents.forEach((incident)=>{
+                    newIdSet.add(`LiveStatus_${scenario['Id']}_${incident['Id']}`)
+                })
+            });
+            
+            data["Games"].flatMap(s=>s.Scenarios).forEach((scenario)=>{
+                scenario.Incidents.forEach((incident)=>{
+                    newIdSet.add(`LiveStatus_${scenario['Id']}_${incident['Id']}`)
+                })
+            });
+            data["Apps"].flatMap(s=>s.Scenarios).forEach((scenario)=>{
+                scenario.Incidents.forEach((incident)=>{
+                    newIdSet.add(`LiveStatus_${scenario['Id']}_${incident['Id']}`)
+                })
+            });
+        }
+        else{
+        */
+            data["CoreServices"].reduce((acc, val) => acc.concat(val.Scenarios), []).forEach((scenario)=>{
+                scenario.Incidents.forEach((incident)=>{
+                    newIdSet.add(`LiveStatus_${scenario['Id']}_${incident['Id']}`)
+                })
+            });
+            
+            data["Games"].reduce((acc, val) => acc.concat(val.Scenarios), []).forEach((scenario)=>{
+                scenario.Incidents.forEach((incident)=>{
+                    newIdSet.add(`LiveStatus_${scenario['Id']}_${incident['Id']}`)
+                })
+            });
+            data["Apps"].reduce((acc, val) => acc.concat(val.Scenarios), []).forEach((scenario)=>{
+                scenario.Incidents.forEach((incident)=>{
+                    newIdSet.add(`LiveStatus_${scenario['Id']}_${incident['Id']}`)
+                })
+            });
+        //}
         
-        data["Games"].flatMap(s=>s.Scenarios).forEach((scenario)=>{
-            scenario.Incidents.forEach((incident)=>{
-                newIdSet.add(`LiveStatus_${scenario['Id']}_${incident['Id']}`)
-            })
-        });
-        data["Apps"].flatMap(s=>s.Scenarios).forEach((scenario)=>{
-            scenario.Incidents.forEach((incident)=>{
-                newIdSet.add(`LiveStatus_${scenario['Id']}_${incident['Id']}`)
-            })
-        });*/
-        data["CoreServices"].reduce((acc, val) => acc.concat(val.Scenarios), []).forEach((scenario)=>{
-            scenario.Incidents.forEach((incident)=>{
-                newIdSet.add(`LiveStatus_${scenario['Id']}_${incident['Id']}`)
-            })
-        });
-        
-        data["Games"].reduce((acc, val) => acc.concat(val.Scenarios), []).forEach((scenario)=>{
-            scenario.Incidents.forEach((incident)=>{
-                newIdSet.add(`LiveStatus_${scenario['Id']}_${incident['Id']}`)
-            })
-        });
-        data["Apps"].reduce((acc, val) => acc.concat(val.Scenarios), []).forEach((scenario)=>{
-            scenario.Incidents.forEach((incident)=>{
-                newIdSet.add(`LiveStatus_${scenario['Id']}_${incident['Id']}`)
-            })
-        });
        
 
         this.subArray.forEach((subArrayItem)=>{
@@ -308,12 +317,16 @@ export class DataService {
         document.documentElement.style.setProperty(`--ion-font-size-h5`, this.fontSizeMap.get(fontSize)+2+"px");
     }
 
+    magicNumber = 0;
     getData(): Observable<any> {
-        const serviceUrl = 'http://notice.xbox.com/ServiceStatusv5/'+this.getCurrentLocale(); 
+        const serviceUrl = `https://notice.xbox.com/ServiceStatusv5/${this.getCurrentLocale()}?id=${this.magicNumber}`; 
         
         return this.http.get<any>(serviceUrl)
         .pipe(
-            tap(data => this.log('fetched overall status xml')),
+            tap(data => {
+                if(data==null||data.length==0)
+                    this.magicNumber++;
+            }),
             catchError(this.handleError('getLiveStatusData', []))
         );
 
@@ -393,23 +406,38 @@ export class DataService {
     }
 
     like(){
+        
+        let storeAppURL = "ms-windows-store://pdp/?productid=9NBLGGH0B2B9";
+        if(this.platform.is('ios')){
+            storeAppURL = "1498334424";
+        }
+        else if(this.platform.is('android')){
+            storeAppURL = "market://details?id=com.reddah.app";
+        }
+        else{
+            
+        }
+
+        this.iab.create(storeAppURL, '_system');
+
+        /*
         this.appRate.preferences = {
             useLanguage : this.settings.locale,
             displayAppName: this.instant('Service.Title'),
             usesUntilPrompt: 2,
             promptAgainForEachNewVersion: false,
             storeAppURL: {
-                ios: '1481532281',
+                ios: '1498334424',
                 android: 'market://details?id=com.reddah.app',
                 windows: 'ms-windows-store://pdp/?productid=9NBLGGH0B2B9',
                 windows8: 'ms-windows-store:Review?name=9nblggh0b2b9'
             },
             customLocale: {
-                //title: 'Do you enjoy %@?',
                 title: this.instant('Menu.Like'),
-                //message: this.instant('Menu.Like'),
+                //message: 'Do you like %@?',
+                message: this.instant('Common.RateMsg'),
                 cancelButtonLabel: this.instant('Common.Cancel'),
-                //laterButtonLabel: 'Remind Me Later',
+                laterButtonLabel: this.instant('Common.Later'),
                 rateButtonLabel: this.instant('Common.Yes')
             },
             callbacks: {
@@ -423,7 +451,7 @@ export class DataService {
         };
 
         this.appRate.promptForRating(true);
-        
+        */
     }
 
     localeData;

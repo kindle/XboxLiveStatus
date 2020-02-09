@@ -80,8 +80,17 @@ export class AppComponent {
             this.statusBar.overlaysWebView(false);
             this.statusBar.styleDefault();
             this.splashScreen.hide();
+            //if(this.platform.is('ios')||this.platform.is('android')){
+            //    this.initCordova();
+            //}
         });
         
+        //if(!this.platform.is('ios')&&!this.platform.is('android')){
+            this.initCordova();
+        //}
+    }
+
+    initCordova(){
         this.initLocale();
         this.network.onDisconnect().subscribe(() => {
             this.data.settings.networkConnected = false;

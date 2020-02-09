@@ -5,6 +5,8 @@
       "Off":"Off",
       "Yes":"Yes",
       "Cancel":"Cancel",
+      "Later":"Later",
+      "RateMsg":"Do you like %@?",
       "ConfirmClear":"Clear",
       "ConfirmClearMessage":"Clear Cache",
       "CurrentVersion":"Version",

@@ -5,6 +5,8 @@
       "Off":"Cойти",
       "Yes":"Да",
       "Cancel":"Отмена",
+      "Later":"потом",
+      "RateMsg":"Тебе нравится %@?",
       "ConfirmClear":"Ясно",
       "ConfirmClearMessage":"Очистить кэш",
       "CurrentVersion":"Версия",

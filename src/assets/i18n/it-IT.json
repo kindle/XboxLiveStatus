@@ -5,6 +5,8 @@
       "Off":"Senza connessione a internet",
       "Yes":"Sì",
       "Cancel":"Annulla",
+      "Later":"Dopo",
+      "RateMsg":"Ti piace %@?",
       "ConfirmClear":"Chiaro",
       "ConfirmClearMessage":"Cancella cache",
       "CurrentVersion":"Versione",

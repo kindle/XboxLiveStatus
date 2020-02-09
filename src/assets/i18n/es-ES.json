@@ -5,6 +5,8 @@
       "Off":"Desactivar",
       "Yes":"Sí",
       "Cancel":"Cancelar",
+      "Later":"Después",
+      "RateMsg":"Te gusta %@?",
       "ConfirmClear":"Claro",
       "ConfirmClearMessage":"Borrar caché",
       "CurrentVersion":"Versión",

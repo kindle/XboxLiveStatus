@@ -5,6 +5,8 @@
       "Off":"オフ",
       "Yes":"はい",
       "Cancel":"キャンセル",
+      "Later":"また後で",
+      "RateMsg":"%@は好きですか？",
       "ConfirmClear":"クリア",
       "ConfirmClearMessage":"キャッシュのクリア",
       "CurrentVersion":"バージョン",
@@ -43,6 +45,6 @@
       "Refresh":"更新",
       "Settings":"設定",
       "Search":"検索",
-      "Like":"Like"
+      "Like":"好き"
   }
 }

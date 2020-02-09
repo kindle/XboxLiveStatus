@@ -5,6 +5,8 @@
       "Off":"Ausschalten",
       "Yes":"Ja",
       "Cancel":"Abbrechen",
+      "Later":"Später",
+      "RateMsg":"Magst du %@?",
       "ConfirmClear":"Klar",
       "ConfirmClearMessage":"Löschen des Caches",
       "CurrentVersion":"Version",
