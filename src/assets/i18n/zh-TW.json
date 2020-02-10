@@ -6,7 +6,7 @@
       "Yes":"確定",
       "Cancel":"取消",
       "Later":"以後再說",
-      "RateMsg":"喜歡%@嗎?",
+      "RateMsg":"喜歡Live Status嗎?",
       "ConfirmClear":"清除",
       "ConfirmClearMessage":"清除緩存",
       "CurrentVersion":"版本號",
@@ -14,7 +14,7 @@
   },
 
   "Service":{
-      "Title":"狀態",
+      "Title":"Live Status",
       "Overall":"Xbox Live 狀態",
       "Core":"核心服務",
       "Games":"遊戲",

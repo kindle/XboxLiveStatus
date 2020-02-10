@@ -25,7 +25,7 @@
     "@ionic-native/app-version": "^5.19.1",
     "@ionic-native/core": "^5.0.0",
     "@ionic-native/globalization": "^5.19.1",
-    "@ionic-native/in-app-browser": "^5.19.1",
+    "@ionic-native/in-app-browser": "^5.21.2",
     "@ionic-native/local-notifications": "^5.19.1",
     "@ionic-native/network": "^5.19.1",
     "@ionic-native/splash-screen": "^5.0.0",
@@ -42,6 +42,7 @@
     "cordova-plugin-appversion": "^1.0.0",
     "cordova-plugin-device": "^2.0.3",
     "cordova-plugin-dialogs": "^2.0.2",
+    "cordova-plugin-inappbrowser": "^3.2.0",
     "cordova-plugin-ionic-keyboard": "^2.2.0",
     "cordova-plugin-ionic-webview": "^3.1.2",
     "cordova-plugin-nativestorage": "^2.3.2",
@@ -96,7 +97,8 @@
       "cordova-plugin-app-version": {},
       "cordova-plugin-app-update": {},
       "cordova-plugin-apprate": {},
-      "cordova-plugin-network-information": {}
+      "cordova-plugin-network-information": {},
+      "cordova-plugin-inappbrowser": {}
     },
     "platforms": [
       "android",
