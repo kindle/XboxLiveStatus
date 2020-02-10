@@ -85,7 +85,7 @@
         <splash height="2732" src="resources/ios/splash/Default@2x~universal~anyany.png" width="2732" />
     </platform>
     <platform name="windows">
-        <icon src="resources/windows/icon/storelogo.png" target="StoreLogo" />
+        <icon src="resources/windows/icon/StoreLogo.png" target="StoreLogo" />
         <icon src="resources/windows/icon/smalllogo.png" target="Square30x30Logo" />
         <icon src="resources/windows/icon/Square44x44Logo.png" target="Square44x44Logo" />
         <icon src="resources/windows/icon/Square70x70Logo.png" target="Square70x70Logo" />
