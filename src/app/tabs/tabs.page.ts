@@ -19,13 +19,15 @@ export class TabsPage {
         private alertController: AlertController,
         private zone: NgZone,
     ) {
-        let locale = this.data.getCurrentLocale();
-        this.translate.setDefaultLang(locale);
-        this.translate.use(locale);
+        //let locale = this.data.getCurrentLocale();
+        //this.translate.setDefaultLang(locale);
+        //this.translate.use(locale);
 
         setInterval(()=>{
             this.data.silenceRefreshStatus()
         }, 1000*60*5)
+        //test
+        //}, 1000*10)
     }
 
     refresh(){

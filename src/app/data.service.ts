@@ -239,7 +239,17 @@ export class DataService {
             });
         //}
         
-       
+        /*
+        if(this.settings.showNotify){
+            this.notification.schedule({
+                id: this.magicNumber++,
+                title: "test"+this.magicNumber,
+                text: "Up and Running",
+                data: { secret: 'secret' },
+                foreground: true,
+                icon: "assets/icon/active_icon3.png"
+            });
+        }*/
 
         this.subArray.forEach((subArrayItem)=>{
             if(!newIdSet.has(subArrayItem.Id)){
@@ -409,13 +419,13 @@ export class DataService {
         
         let storeAppURL = "ms-windows-store://pdp/?productid=9NBLGGH0B2B9";
         if(this.platform.is('ios')){
-            storeAppURL = "1498334424";
+            storeAppURL = "itms-apps://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?id=1498334424&onlyLatestVersion=true&pageNumber=0&sortOrdering=1&type=Purple+Software";
         }
         else if(this.platform.is('android')){
-            storeAppURL = "market://details?id=com.reddah.app";
+            storeAppURL = "market://details?id=com.reddah.livestatus";
         }
         else{
-            
+
         }
 
         this.iab.create(storeAppURL, '_system');
