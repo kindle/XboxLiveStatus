@@ -10,7 +10,9 @@
       "ConfirmClear":"Claro",
       "ConfirmClearMessage":"Borrar caché",
       "CurrentVersion":"Versión",
-      "BuyBeer":"Cómprame una cerveza"
+      "BuyBeer":"Cómprame una cerveza",
+      "Delete":"Eliminar",
+      "TurnOnNotify":"Por favor, active Notificaciones a través de Configuración"
   },
 
   "Service":{

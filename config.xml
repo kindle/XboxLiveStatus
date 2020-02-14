@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.reddah.livestatus" version="1.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="com.reddah.livestatus" version="1.0.2" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>LiveStatus</name>
     <description>Live Status An awesome Ionic/Cordova app.</description>
     <author email="weibailin@hotmail.com" href="https://reddah.com/">Reddah.com Team</author>
@@ -108,6 +108,7 @@
     <plugin name="cordova-plugin-network-information" spec="2.0.2" />
     <plugin name="cordova-plugin-inappbrowser" spec="^3.2.0" />
     <plugin name="cordova-plugin-local-notification" spec="^0.9.0-beta.2" />
+    <plugin name="cordova-plugin-android-permissions" spec="^1.0.2" />
     <engine name="android" spec="^7.1.4" />
     <engine name="ios" spec="4.5.5" />
     <engine name="windows" spec="^6.0.1" />

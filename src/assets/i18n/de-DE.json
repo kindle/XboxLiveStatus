@@ -10,7 +10,9 @@
       "ConfirmClear":"Klar",
       "ConfirmClearMessage":"Löschen des Caches",
       "CurrentVersion":"Version",
-      "BuyBeer":"Kaufen Sie mir ein Bier"
+      "BuyBeer":"Kaufen Sie mir ein Bier",
+      "Delete":"Löschen",
+      "TurnOnNotify":"Bitte aktivieren Sie Benachrichtigungen über Einstellungen"
   },
 
   "Service":{

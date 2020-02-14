@@ -10,7 +10,9 @@
       "ConfirmClear":"Clair",
       "ConfirmClearMessage":"Cache claire",
       "CurrentVersion":"Version",
-      "BuyBeer":"Achète-moi une bière"
+      "BuyBeer":"Achète-moi une bière",
+      "Delete":"Supprimer",
+      "TurnOnNotify":"Veuillez activer les notifications via Paramètres"
   },
 
   "Service":{

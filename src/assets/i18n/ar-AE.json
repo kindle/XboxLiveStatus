@@ -1,50 +1,52 @@
 {
   "Common":{
-      "Network": "No Internet Connection",
-      "On":"On",
-      "Off":"Off",
-      "Yes":"Yes",
-      "Cancel":"Cancel",
-      "Later":"Later",
-      "RateMsg":"Do you like Live Status?",
-      "ConfirmClear":"Clear",
-      "ConfirmClearMessage":"Clear Cache",
-      "CurrentVersion":"Version",
-      "BuyBeer":"Buy me a beer"
+      "Network": "لا يوجد اتصال بالإنترنت",
+      "On":"في",
+      "Off":"قباله",
+      "Yes":"نعم",
+      "Cancel":"إلغاء الأمر",
+      "Later":"لاحقا",
+      "RateMsg":"هل تحب الحالة الحية؟",
+      "ConfirmClear":"واضحه",
+      "ConfirmClearMessage":"مسح ذاكرة التخزين المؤقت",
+      "CurrentVersion":"الإصدار",
+      "BuyBeer":"اشتري لي بيرة",
+      "Delete":"حذف",
+      "TurnOnNotify":"الرجاء تشغيل الإشعارات عبر الإعدادات"
   },
 
   "Service":{
       "Title":"Live Status",
       "Overall":"Xbox Live Status",
-      "Core":"Core Services",
-      "Games":"Games",
-      "Apps":"Apps",
-      "Notify":"Notifications"
+      "Core":"الخدمات الأساسية",
+      "Games":"العاب",
+      "Apps":"تطبيقات",
+      "Notify":"الاخطارات"
   },
 
   "Status":{
-      "Ok":"Up and Running",
-      "Alert":"Service Alert"
+      "Ok":"تشغيل وتشغيل",
+      "Alert":"تنبيه الخدمة"
   },
 
   "Notify":{
-      "Subscribe":"Notify me when this service or app is up and running",
-      "Thanks":"Thank you. We will notify you when service or app is up and running."
+      "Subscribe":"إعلامي عندما تكون هذه الخدمة أو التطبيق قيد التشغيل",
+      "Thanks":"شكرا. سنقوم بإعلامك عندما تكون الخدمة أو التطبيق قيد التشغيل."
   },
 
   "Settings":{
-      "Title":"Settings",
-      "FontSizeTitle":"Font Size",
-      "LanguageTitle":"Language",
-      "NotifyTitle":"Notification",
-      "CacheTitle":"Cache",
-      "AboutTitle":"About"
+      "Title":"اعدادات",
+      "FontSizeTitle":"حجم الخط",
+      "LanguageTitle":"اللغه",
+      "NotifyTitle":"الاعلام",
+      "CacheTitle":"ذاكره التخزين المؤقت",
+      "AboutTitle":"عن"
   },
 
   "Menu":{
-      "Refresh":"Refresh",
-      "Settings":"Settings",
-      "Search":"Search",
-      "Like":"Like"
+      "Refresh":"تحديث",
+      "Settings":"اعدادات",
+      "Search":"البحث",
+      "Like":"مثل"
   }
 }

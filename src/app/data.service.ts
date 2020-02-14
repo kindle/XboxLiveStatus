@@ -10,6 +10,7 @@ import { AppRate } from '@ionic-native/app-rate/ngx';
 import * as moment from 'moment';
 import { Locale } from './models/locale';
 import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
+import { AndroidPermissions } from '@ionic-native/android-permissions/ngx';
 
 @Injectable({
     providedIn: 'root'
@@ -89,6 +90,7 @@ export class DataService {
         private appRate: AppRate,
         private platform: Platform,
         private iab: InAppBrowser,
+        private androidPermissions: AndroidPermissions,
     ) {}
 
     overall = {
@@ -177,6 +179,43 @@ export class DataService {
 
     async subscribe(scenario, incident)
     { 
+        //check notification permission
+        if(this.platform.is('ios')){
+            this.notification.hasPermission().then((granted)=>{
+                if(!granted){
+                    this.notification.requestPermission().then( (granted1)=> { 
+                        //alert(granted1);
+                    });
+                    /*
+                    this.androidPermissions.checkPermission(this.androidPermissions.PERMISSION.ACCESS_NOTIFICATION_POLICY).then(
+                        result => console.log('Has permission?',result.hasPermission),
+                        err => this.androidPermissions.requestPermission(this.androidPermissions.PERMISSION.ACCESS_NOTIFICATION_POLICY)
+                    );
+                    this.androidPermissions.requestPermissions([
+                        this.androidPermissions.PERMISSION.ACCESS_NOTIFICATION_POLICY
+                    ]);*/
+                }
+            });
+        }
+        else if(this.platform.is('android')){
+            this.notification.hasPermission().then((granted)=>{
+                if(!granted){
+                    this.NotificationAlert();
+                    //this.notification.requestPermission().then( (granted1)=> { 
+                    //    alert(granted1);
+                    //});
+                    /*
+                    this.androidPermissions.checkPermission(this.androidPermissions.PERMISSION.ACCESS_NOTIFICATION_POLICY).then(
+                        result => console.log('Has permission?',result.hasPermission),
+                        err => this.androidPermissions.requestPermission(this.androidPermissions.PERMISSION.ACCESS_NOTIFICATION_POLICY)
+                    );
+                    this.androidPermissions.requestPermissions([
+                        this.androidPermissions.PERMISSION.ACCESS_NOTIFICATION_POLICY
+                    ]);*/
+                }
+            });
+        }
+
         let subId = `LiveStatus_${scenario['Id']}_${incident['Id']}`;
       
         this.subArray.push({
@@ -188,6 +227,25 @@ export class DataService {
         });
 
         this.localStorageService.store("LiveStatus_SubArray", this.subArray);
+    }
+
+    async NotificationAlert(){
+        const alert = await this.alertController.create({
+            header: this.instant("Menu.Settings"),
+            message: this.instant("Common.TurnOnNotify"),
+            buttons: [
+            {
+                text: this.instant("Common.Cancel"),
+                role: 'cancel',
+                cssClass: 'secondary',
+                handler: () => {}
+            }, {
+                text: this.instant("Common.Yes"),
+                handler: () => {}
+            }]
+        });
+
+        await alert.present();
     }
 
     isSubscribed(scenario, incident)
@@ -277,18 +335,18 @@ export class DataService {
     //this.data.instant("Confirm.Title")
     async confirmDelete(notice){
         const alert = await this.alertController.create({
-            header: "Delete",
+            header: this.instant("Common.Delete"),
             message: notice.Name,
             buttons: [
             {
-                text: "Canel",
+                text: this.instant("Common.Cancel"),
                 role: 'cancel',
                 cssClass: 'secondary',
                 handler: (blah) => {
                   
                 }
             }, {
-                text: "Yes",
+                text: this.instant("Common.Yes"),
                 handler: () => {
                     this.noticeArray.forEach((item, index)=>{
                         if(item.Id==notice.Id)

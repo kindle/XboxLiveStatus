@@ -10,7 +10,9 @@
         "ConfirmClear":"Clear",
         "ConfirmClearMessage":"Clear Cache",
         "CurrentVersion":"Version",
-        "BuyBeer":"Buy me a beer"
+        "BuyBeer":"Buy me a beer",
+        "Delete":"Delete",
+        "TurnOnNotify":"Please turn on Notifications via Settings"
     },
 
     "Service":{

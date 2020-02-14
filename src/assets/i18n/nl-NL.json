@@ -10,7 +10,9 @@
       "ConfirmClear":"Duidelijk",
       "ConfirmClearMessage":"Cache wissen",
       "CurrentVersion":"Versie",
-      "BuyBeer":"Koop een biertje voor me"
+      "BuyBeer":"Koop een biertje voor me",
+      "Delete":"Verwijderen",
+      "TurnOnNotify":"Meldingen inschakelen via Instellingen"
   },
 
   "Service":{

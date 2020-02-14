@@ -22,6 +22,7 @@ import { Globalization } from '@ionic-native/globalization/ngx';
 import { AppRate } from '@ionic-native/app-rate/ngx';
 import { SettingsPage } from './settings/settings.page';
 import { FormsModule } from '@angular/forms';
+import { AndroidPermissions } from '@ionic-native/android-permissions/ngx';
 
 @NgModule({
     //schemas: [CUSTOM_ELEMENTS_SCHEMA],
@@ -65,6 +66,7 @@ import { FormsModule } from '@angular/forms';
         InAppBrowser,
         AppRate,
         Globalization,
+        AndroidPermissions,
     ],
     bootstrap: [AppComponent]
 })

@@ -10,7 +10,9 @@
       "ConfirmClear":"명확한",
       "ConfirmClearMessage":"캐시 지우기",
       "CurrentVersion":"버전",
-      "BuyBeer":"맥주 좀 사줘"
+      "BuyBeer":"맥주 좀 사줘",
+      "Delete":"삭제",
+      "TurnOnNotify":"설정을 통해 알림을 켜십시오"
   },
 
   "Service":{

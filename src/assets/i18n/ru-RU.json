@@ -10,7 +10,9 @@
       "ConfirmClear":"Ясно",
       "ConfirmClearMessage":"Очистить кэш",
       "CurrentVersion":"Версия",
-      "BuyBeer":"Купи мне пива"
+      "BuyBeer":"Купи мне пива",
+      "Delete":"Удалить",
+      "TurnOnNotify":"Пожалуйста, включите уведомления через настройки"
   },
 
   "Service":{

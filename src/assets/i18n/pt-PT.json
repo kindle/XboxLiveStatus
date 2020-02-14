@@ -10,7 +10,9 @@
       "ConfirmClear":"Limpar",
       "ConfirmClearMessage":"Cache claro",
       "CurrentVersion":"Versão",
-      "BuyBeer":"Pague-me uma cerveja"
+      "BuyBeer":"Pague-me uma cerveja",
+      "Delete":"Excluir",
+      "TurnOnNotify":"Por favor, ligue as Notificações através de Definições"
   },
 
   "Service":{

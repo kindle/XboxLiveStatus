@@ -10,7 +10,9 @@
       "ConfirmClear":"クリア",
       "ConfirmClearMessage":"キャッシュのクリア",
       "CurrentVersion":"バージョン",
-      "BuyBeer":"ビールを買って"
+      "BuyBeer":"ビールを買って",
+      "Delete":"削除",
+      "TurnOnNotify":"設定から通知をオンにしてください"
   },
 
   "Service":{

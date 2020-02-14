@@ -10,7 +10,9 @@
         "ConfirmClear":"清除",
         "ConfirmClearMessage":"清除缓存",
         "CurrentVersion":"版本号",
-        "BuyBeer":"请作者喝咖啡"
+        "BuyBeer":"请作者喝咖啡",
+        "Delete":"删除",
+        "TurnOnNotify":"请通过‘设置’打开‘通知’"
     },
 
     "Service":{
