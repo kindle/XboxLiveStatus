@@ -230,14 +230,6 @@
       "idiom" : "watch-marketing",
       "filename" : "icon-1024.png",
       "scale" : "1x"
-    },
-    {
-      "size" : "44x44",
-      "idiom" : "watch",
-      "filename" : "AppIcon44x44@2x.png",
-      "scale" : "2x",
-      "role" : "longLook",
-      "subtype" : "42mm"
     }
   ],
   "info" : {
