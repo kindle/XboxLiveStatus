@@ -118,4 +118,11 @@ export class SettingAboutPage implements OnInit {
         await alert.present();
     }
 
+    test(){
+        /*
+        let testJson = [{"Id":"LiveStatus_491582364_1590","Name":"Need for Speed™ Heat","Time":"2020-02-06 05:41:13","Message":"Hello Xbox members, we are currently experiencing an issue. We apologize for the inconvenience. Please check back for updates.","Devices":"Xbox One"},{"Id":"LiveStatus_12206284_1613","Name":"eFootball PES 2020","Time":"2020-02-14 15:41:00","Message":"Hello Xbox members, we are currently experiencing an issue. We apologize for the inconvenience. Please check back for updates.","Devices":"Xbox One"}]
+        this.data.subArray = testJson;
+        */
+    }
+
 }

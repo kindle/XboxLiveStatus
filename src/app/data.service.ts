@@ -221,7 +221,8 @@ export class DataService {
         this.subArray.push({
             Id:subId, 
             Name: scenario["Name"],
-            Time: this.utcToLocal(incident["Begin"]),
+            //Time: this.utcToLocal(incident["Begin"]),
+            Time: incident["Begin"],
             Message: incident["Stage"]["Message"],
             Devices: scenario["Devices"].map(d=>d["Name"]).join(",")
         });
@@ -301,8 +302,8 @@ export class DataService {
         if(this.settings.showNotify){
             this.notification.schedule({
                 id: this.magicNumber++,
-                title: "test"+this.magicNumber,
-                text: "Up and Running",
+                title: "Call of Duty®: Modern Warfare®",
+                text: this.instant("Status.Ok"),
                 data: { secret: 'secret' },
                 foreground: true,
                 icon: "assets/icon/active_icon3.png"
@@ -319,7 +320,7 @@ export class DataService {
                     this.notification.schedule({
                         id: subArrayItem.Id,
                         title: subArrayItem.Name,
-                        text: "Up and Running",
+                        text: this.instant("Status.Ok"),
                         data: { secret: 'secret' },
                         foreground: true,
                         icon: "assets/icon/active_icon3.png"
