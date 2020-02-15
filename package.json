@@ -46,7 +46,7 @@
     "cordova-plugin-dialogs": "^2.0.2",
     "cordova-plugin-inappbrowser": "^3.2.0",
     "cordova-plugin-ionic-keyboard": "^2.2.0",
-    "cordova-plugin-ionic-webview": "^3.1.2",
+    "cordova-plugin-ionic-webview": "^4.1.0",
     "cordova-plugin-local-notification": "^0.9.0-beta.2",
     "cordova-plugin-nativestorage": "^2.3.2",
     "cordova-plugin-network-information": "^2.0.2",
@@ -93,9 +93,6 @@
       "cordova-plugin-statusbar": {},
       "cordova-plugin-device": {},
       "cordova-plugin-splashscreen": {},
-      "cordova-plugin-ionic-webview": {
-        "ANDROID_SUPPORT_ANNOTATIONS_VERSION": "27.+"
-      },
       "cordova-plugin-ionic-keyboard": {},
       "cordova-plugin-app-version": {},
       "cordova-plugin-app-update": {},
@@ -103,7 +100,8 @@
       "cordova-plugin-network-information": {},
       "cordova-plugin-inappbrowser": {},
       "cordova-plugin-local-notification": {},
-      "cordova-plugin-android-permissions": {}
+      "cordova-plugin-android-permissions": {},
+      "cordova-plugin-ionic-webview": {}
     },
     "platforms": [
       "android",
